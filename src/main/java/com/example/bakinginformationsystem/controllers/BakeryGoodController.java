@@ -45,17 +45,20 @@ public class BakeryGoodController implements Initializable {
         bakeryGoodControl = this;
     }
 
+    //Method for adding a bakery item to the listview and linkedlist
     public void addBakeryGood(ActionEvent actionEvent) {
         if(goodType!=null && itemName!=null && textDesc!=null && origin!=null && imageURL!=null){
             BakeryGood BG = new BakeryGood(goodType.getText(), itemName.getText(), textDesc.getText(), origin.getText(),imageURL.getText());
-            goodsListView.getItems().add(BG);
-            bakeryGoodList.addFirst(BG);
+            goodsListView.getItems().add(BG); //adds the bakerygood to the list view
+            bakeryGoodList.addFirst(BG); //adds the bakerygood to the bakerygoodlist linkedlist
         }
     }
 
 
+    //Method for deleting an item from the list view
     public void deleteBakeryItem(ActionEvent actionEvent) {
         BakeryGood BGtoDelete = goodsListView.getSelectionModel().getSelectedItem();
-        goodsListView.getItems().remove(BGtoDelete);
+        goodsListView.getItems().remove(BGtoDelete); //deletes the selected bakerygood object from the list view
+        //still to make delete from linkedlist part.
     }
 }
