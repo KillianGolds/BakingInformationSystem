@@ -7,8 +7,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-//Jordan if you see this, fixed a bunch of errors with the folder set up, should all be gucci going forward as if its a regular root, boilerplate code for ingredients and recipes still needs doing if you wanted to tap away at that, have a look at BakeryGood class if you want to see my usual conventions.
-
 public class Main extends Application {
 
     @Override

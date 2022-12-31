@@ -30,4 +30,9 @@ public class BakeryGood {
 
     public String getImageURL() {return imageURL;}
     public void setImageURL(String imageURL) {this.imageURL = imageURL;}
+
+    @Override
+    public String toString() {
+        return "Type: "+goodType+", Name: "+itemName+", Country of Origin: "+origin+".\n"+ "Description: "+textDesc+".\n"+"Image URL: "+imageURL;
+    }
 }

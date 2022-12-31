@@ -119,19 +119,19 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button fx:id="addItem" mnemonicParsing="false" text="Add Bakery Item">
+                  <Button fx:id="addItem" mnemonicParsing="false" text="Add Bakery Item" onAction="#addBakeryGood">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <ListView prefHeight="265.0" prefWidth="663.0">
+                  <ListView fx:id="goodsListView" prefHeight="265.0" prefWidth="663.0">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </ListView>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="673.0">
                      <children>
-                        <Button fx:id="delItem" mnemonicParsing="false" text="Delete Bakery Item">
+                        <Button fx:id="delItem" mnemonicParsing="false" text="Delete Bakery Item" onAction="#deleteBakeryItem">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
