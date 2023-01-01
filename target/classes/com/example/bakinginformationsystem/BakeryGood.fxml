@@ -21,6 +21,11 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="32.0" prefWidth="673.0">
                      <children>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                        </Separator>
                         <Label text="Type:">
                            <font>
                               <Font size="14.0" />
@@ -30,8 +35,18 @@
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="goodType" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Separator>
                      </children>
                   </HBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </Separator>
                   <HBox alignment="CENTER" prefHeight="98.0" prefWidth="673.0">
                      <children>
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -119,7 +134,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button fx:id="addItem" mnemonicParsing="false" text="Add Bakery Item" onAction="#addBakeryGood">
+                  <Button fx:id="addItem" mnemonicParsing="false" onAction="#addBakeryGood" text="Add Bakery Item">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -131,16 +146,26 @@
                   </ListView>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="673.0">
                      <children>
-                        <Button fx:id="delItem" mnemonicParsing="false" text="Delete Bakery Item" onAction="#deleteBakeryItem">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="clearItems" mnemonicParsing="false" text="Clear All Bakery Items">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Button>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0">
+                           <children>
+                              <Button fx:id="delItem" mnemonicParsing="false" onAction="#deleteBakeryItem" text="Delete Bakery Item">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="clearItems" mnemonicParsing="false" onAction="#deleteAllBakeryItem" text="Clear All Bakery Items">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="refreshGoodsListView" mnemonicParsing="false" onAction="#refreshBakeryGoodListView" text="Refresh List" />
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
                </children>
@@ -151,7 +176,7 @@
    <top>
       <Label text="Baked Goods" underline="true" BorderPane.alignment="CENTER">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
          </font>
       </Label>
    </top>
