@@ -91,8 +91,7 @@
                               </VBox>
                               <VBox prefHeight="95.0" prefWidth="202.0">
                                  <children>
-                                    <TextField fx:id="quantity" prefHeight="25.0" prefWidth="179.0" />   //Not sure why
-                                                                                                         //fxid is fucky
+                                    <TextField fx:id="quantity" prefHeight="25.0" prefWidth="179.0" />
                                  </children>
                               </VBox>
                            </children>
