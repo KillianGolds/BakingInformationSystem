@@ -24,7 +24,7 @@ public class IngredientController {
     @FXML
     public Button addIngredient;
     @FXML
-    public ListView ingredientsListView;
+    public ListView<Ingredient> ingredientsListView;
     public ListView<Ingredient> getIngredientsListView() {
         return ingredientsListView;
     }
@@ -39,7 +39,7 @@ public class IngredientController {
 
     public void addIngredient(ActionEvent actionEvent) {
         if (ingredientName != null && ingredientTextDesc != null && calories != null) {
-            Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), calories.getText());
+            Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), Integer.parseInt(calories.getText()));
             //Need to convert from int to String. Can't wrap for some reason
             ingredientsListView.getItems().add(I); //adds the ingredient to the list view
             ingredientList.addLast(I); //adds the ingredient to the ingredientList linkedlist

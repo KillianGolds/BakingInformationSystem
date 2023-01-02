@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.IngredientController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.IngredientController">
    <center>
       <VBox prefHeight="490.0" prefWidth="673.0" BorderPane.alignment="CENTER">
          <children>
@@ -122,7 +122,7 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="clearIngredients" mnemonicParsing="false" onAction="#deleteAllIngredient" text="Clear All Ingredients">
+                              <Button fx:id="clearIngredients" mnemonicParsing="false" onAction="#deleteAllIngredients" text="Clear All Ingredients">
                                  <HBox.margin>
                                     <Insets left="5.0" />
                                  </HBox.margin>

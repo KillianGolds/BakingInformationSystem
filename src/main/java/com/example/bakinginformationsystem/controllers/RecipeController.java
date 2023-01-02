@@ -1,6 +1,5 @@
 package com.example.bakinginformationsystem.controllers;
 
-import com.example.bakinginformationsystem.BakeryGood;
 import com.example.bakinginformationsystem.GenList;
 import com.example.bakinginformationsystem.Recipe;
 import javafx.event.ActionEvent;
@@ -47,17 +46,16 @@ public class RecipeController implements Initializable {
     }
 
     //Method for adding a bakery item to the listview and linkedlist
-    public void addRecipe(ActionEvent actionEvent) {
-        if(goodName!=null && ingredientName!=null && quantity!=null){
-            Recipe RP = new Recipe(goodName.getText(), ingredientName.getText(), quantity.getText()); //Won't pull constructor from Recipe??
-
-            recipeListView.getItems().add(RP); //adds the recipe to the list view
-            recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
-            goodName.clear();
-            ingredientName.clear();
-            quantity.clear();
-        }
-    }
+//    public void addRecipe(ActionEvent actionEvent) {
+//        if(goodName!=null && ingredientName!=null && quantity!=null){
+//            Recipe RP = new Recipe(goodName.getText(), ingredientName.getText(), quantity.getText()); //Won't pull constructor from Recipe??
+//            recipeListView.getItems().add(RP); //adds the recipe to the list view
+//            recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
+//            goodName.clear();
+//            ingredientName.clear();
+//            quantity.clear();
+//        }
+//    }
 
 
     //Method for deleting an item from the list view
