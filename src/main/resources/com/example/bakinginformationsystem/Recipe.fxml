@@ -5,14 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.IngredientController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.RecipeController">
    <center>
       <VBox prefHeight="490.0" prefWidth="673.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +25,7 @@
                               <Insets right="25.0" />
                            </HBox.margin>
                         </Separator>
-                        <Label text="Name:">
+                        <Label text="Baked Good:">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -34,7 +33,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="ingredientName" />
+                        <TextField fx:id="goodName" />
                         <Separator orientation="VERTICAL" prefHeight="200.0">
                            <HBox.margin>
                               <Insets left="25.0" />
@@ -42,72 +41,74 @@
                         </Separator>
                      </children>
                   </HBox>
-                  <Separator prefWidth="673.0" />
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </Separator>
                   <HBox alignment="CENTER" prefHeight="98.0" prefWidth="673.0">
                      <children>
-                        <Separator orientation="VERTICAL" prefHeight="200.0">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin></Separator>
-                        <HBox prefHeight="97.0" prefWidth="391.0">
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <HBox prefHeight="55.0" prefWidth="311.0">
                            <children>
-                              <Label text="Textual Description:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="65.0" right="5.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <TextArea fx:id="ingredientTextDesc" prefHeight="97.0" prefWidth="214.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextArea>
+                              <VBox alignment="TOP_CENTER" prefHeight="98.0" prefWidth="131.0">
+                                 <children>
+                                    <Label text="Ingredient:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="2.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="26.0" prefWidth="179.0">
+                                 <children>
+                                    <TextField fx:id="ingredientName" prefHeight="25.0" prefWidth="183.0" />
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                         <Separator orientation="VERTICAL" prefHeight="200.0">
                            <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
+                              <Insets left="5.0" />
                            </HBox.margin>
                         </Separator>
-                        <HBox prefHeight="100.0" prefWidth="330.0">
+                        <HBox prefHeight="84.0" prefWidth="330.0">
                            <children>
-                              <Label text="Calories:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="65.0" right="5.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <TextField fx:id="calories" prefHeight="25.0" prefWidth="167.0">
-                                 <HBox.margin>
-                                    <Insets bottom="65.0" right="25.0" />
-                                 </HBox.margin>
-                              </TextField>
+                              <VBox alignment="TOP_CENTER" prefHeight="98.0" prefWidth="124.0">
+                                 <children>
+                                    <Label text="Quantity (g/ml):">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="2.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="95.0" prefWidth="202.0">
+                                 <children>
+                                    <TextField fx:id="quantity" prefHeight="25.0" prefWidth="179.0" />   //Not sure why
+                                                                                                         //fxid is fucky
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
-                        <Separator orientation="VERTICAL" prefHeight="200.0">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin></Separator>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <Separator prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Separator>
-                  <Button fx:id="addIngredient" mnemonicParsing="false" onAction="#addIngredient" text="Add Ingredient">
+                  <Button fx:id="addItem" mnemonicParsing="false" onAction="#addRecipe" text="Add Recipe">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <ListView fx:id="ingredientsListView" prefHeight="265.0" prefWidth="663.0">
+                  <ListView fx:id="recipeListView" prefHeight="414.0" prefWidth="663.0">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
@@ -117,12 +118,12 @@
                         <HBox prefHeight="100.0" prefWidth="200.0" />
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0">
                            <children>
-                              <Button fx:id="delIngredient" mnemonicParsing="false" onAction="#deleteIngredient" text="Delete Ingredient">
+                              <Button fx:id="delItem" mnemonicParsing="false" onAction="#deleteRecipe" text="Delete Recipe">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="clearIngredients" mnemonicParsing="false" onAction="#deleteAllIngredients" text="Clear All Ingredients">
+                              <Button fx:id="clearItems" mnemonicParsing="false" onAction="#deleteAllRecipes" text="Clear All Recipes">
                                  <HBox.margin>
                                     <Insets left="5.0" />
                                  </HBox.margin>
@@ -131,7 +132,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="refreshIngredientsListView" mnemonicParsing="false" onAction="#refreshIngredientListView" text="Refresh List" />
+                              <Button fx:id="refreshRecipesListView" mnemonicParsing="false" onAction="#refreshRecipeListView" text="Refresh List" />
                            </children>
                         </HBox>
                      </children>
@@ -142,7 +143,7 @@
       </VBox>
    </center>
    <top>
-      <Label text="Ingredients" underline="true" BorderPane.alignment="CENTER">
+      <Label text="Recipe" underline="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>

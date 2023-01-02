@@ -5,12 +5,12 @@ public class Recipe {
 
     private GenList<Ingredient> ingredients;
     //Not sure how to approach measurements of each ingredient. Was thinking of making a new array of
-    //measurements that links to the array ingredients. Leaving as an int for now.
-    private int measurement;
+    //measurements that links to the array ingredients. Leaving as is for now.
+    private int quantity;
     private String bakedGood;
 
-    public Recipe(int measurement, String bakedGood) {
-        this.measurement = measurement;
+    public Recipe(int quantity, String bakedGood) {
+        this.quantity = quantity;
         this.bakedGood = bakedGood;
         this.ingredients = new GenList<>();
     }
@@ -24,12 +24,12 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public int getMeasurement() {
-        return measurement;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setMeasurement(int measurement) {
-        this.measurement = measurement;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getBakedGood() {

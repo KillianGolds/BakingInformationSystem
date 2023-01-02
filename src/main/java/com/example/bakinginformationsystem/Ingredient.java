@@ -3,32 +3,32 @@ package com.example.bakinginformationsystem;
 //to be done
 public class Ingredient {
 
-    private String ingrName;
-    private String ingrDesc;
+    private String ingredientName;
+    private String ingredientDescription;
     private int calories;
 
     //Constructor
-    public Ingredient(String ingrName, String ingrDesc, int calories){
-        this.ingrName = ingrName;
-        this.ingrDesc = ingrDesc;
+    public Ingredient(String ingredientName, String ingredientDescription, int calories){
+        this.ingredientName = ingredientName;
+        this.ingredientDescription = ingredientDescription;
         this.calories = calories;
     }
 
     //Getters+Setters
-    public String getIngrName() {
-        return ingrName;
+    public String getIngredientNameName() {
+        return ingredientName;
     }
 
-    public void setIngrName(String ingrName) {
-        this.ingrName = ingrName;
+    public void setIngredientNameName(String ingrName) {
+        this.ingredientName = ingredientName;
     }
 
-    public String getIngrDesc() {
-        return ingrDesc;
+    public String getIngredientNameDesc() {
+        return ingredientDescription;
     }
 
-    public void setIngrDesc(String ingrDesc) {
-        this.ingrDesc = ingrDesc;
+    public void setIngredientDescription(String ingrDesc) {
+        this.ingredientDescription = ingredientDescription;
     }
 
     public int getCalories() {
@@ -42,6 +42,6 @@ public class Ingredient {
     //Methods
     @Override
     public String toString(){
-        return "Name: " + ingrName + ", Description: " + ingrDesc + ", Calories: " + calories;
+        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories;
     }
 }
