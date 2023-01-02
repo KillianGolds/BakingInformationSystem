@@ -1,8 +1,8 @@
 package com.example.bakinginformationsystem;
 
 //to be done
-public class Recipes {
+public class Recipe {
 
-    //well boi wdc
+    GenList <Recipe> recipe;
 
 }

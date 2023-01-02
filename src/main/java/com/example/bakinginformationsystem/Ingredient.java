@@ -1,14 +1,14 @@
 package com.example.bakinginformationsystem;
 
 //to be done
-public class Ingredients{
+public class Ingredient {
 
     private String ingrName;
     private String ingrDesc;
     private int calories;
 
     //Constructor
-    public Ingredients(String ingrName, String ingrDesc, int calories){
+    public Ingredient(String ingrName, String ingrDesc, int calories){
         this.ingrName = ingrName;
         this.ingrDesc = ingrDesc;
         this.calories = calories;
