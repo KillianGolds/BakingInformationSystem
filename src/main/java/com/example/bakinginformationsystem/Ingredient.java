@@ -6,12 +6,14 @@ public class Ingredient {
     private String ingredientName;
     private String ingredientDescription;
     private int calories;
+    private String measurementUnit;
 
     //Constructor
-    public Ingredient(String ingredientName, String ingredientDescription, int calories){
+    public Ingredient(String ingredientName, String ingredientDescription, int calories, String measurementUnit){
         this.ingredientName = ingredientName;
         this.ingredientDescription = ingredientDescription;
         this.calories = calories;
+        this.measurementUnit = measurementUnit;
     }
 
     //Getters+Setters
@@ -39,9 +41,17 @@ public class Ingredient {
         this.calories = calories;
     }
 
+    public String getMeasurementUnit() {
+        return measurementUnit;
+    }
+
+    public void setMeasurementUnit(int calories) {
+        this.measurementUnit = measurementUnit;
+    }
+
     //Methods
     @Override
     public String toString(){
-        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories;
+        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories + ", Measurement Unit: " + measurementUnit;
     }
 }
