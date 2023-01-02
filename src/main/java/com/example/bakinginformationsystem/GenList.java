@@ -1,5 +1,6 @@
 package com.example.bakinginformationsystem;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 
 import java.util.NoSuchElementException;
@@ -103,6 +104,14 @@ public class GenList<object> {
             current = current.next;
         }
     }
+
+    public void iterateChoiceBox(){
+        Node current = head;
+        while (current != null) {
+        specificListView.getItems().add(current.data);
+        current = current.next;
+    }
+}
 
     //possibly more methods needed here WIP.
 }

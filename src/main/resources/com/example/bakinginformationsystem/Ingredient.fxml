@@ -98,8 +98,8 @@
                                        <children>
                                           <VBox prefHeight="29.0" prefWidth="150.0">
                                              <children>
-                                                <RadioButton mnemonicParsing="false" text="Grams /g" />
-                                                <RadioButton mnemonicParsing="false" text="Millileters /ml" />
+                                                <RadioButton fx:id="inGrams" mnemonicParsing="false" text="Grams /g" />
+                                                <RadioButton fx:id="inMilliliters" mnemonicParsing="false" text="Millileters /ml" />
                                              </children>
                                           </VBox>
                                        </children>

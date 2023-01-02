@@ -1,14 +1,13 @@
 package com.example.bakinginformationsystem.controllers;
 
+import com.example.bakinginformationsystem.BakeryGood;
 import com.example.bakinginformationsystem.GenList;
+import com.example.bakinginformationsystem.Ingredient;
 import com.example.bakinginformationsystem.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,27 +17,28 @@ public class RecipeController implements Initializable {
 
     public static RecipeController recipeControl;
     @FXML
-    private TextField goodName;
+    public ChoiceBox<String> bakeryGoodChoiceBox;
     @FXML
-    private TextField ingredientName;   //Included this to add individual ingredients, but I want to set it up so that it can pull from
-                                        //the list of ingredients that's already made.
+    public ListView<Ingredient> ingredientsToAddListView;
     @FXML
-    private TextArea quantity;
+    public ListView<?> ingredientsAddedListView;
     @FXML
-    private Button addItem;
+    public Button addRecipe;
     @FXML
-    private Button delItem;
+    public ListView<Recipe> recipeListView;
     @FXML
-    private ListView<Recipe> recipeListView;
+    public Button delRecipe;
+    @FXML
+    public Button clearAllRecipes;
+    @FXML
+    public Button refreshRecipesListView;
+
+
     public ListView<Recipe> getRecipeListView() {
         return recipeListView;
     }
-    @FXML
-    private Button clearItems;
-    @FXML
-    public Button refreshRecipeListView;
-
     GenList<Recipe> recipeList = new GenList();
+
 
 
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -78,4 +78,6 @@ public class RecipeController implements Initializable {
     }
 
 
+    public void addRecipe(ActionEvent actionEvent) {
+    }
 }

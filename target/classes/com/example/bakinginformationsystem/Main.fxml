@@ -71,6 +71,15 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Recipe">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <fx:include source="Recipe.fxml" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
                <BorderPane.margin>
                   <Insets top="5.0" />

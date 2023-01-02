@@ -4,15 +4,15 @@ import com.example.bakinginformationsystem.GenList;
 import com.example.bakinginformationsystem.Ingredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class IngredientController {
+import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
+
+public class IngredientController implements Initializable {
 
     public static IngredientController ingredientControl;
     @FXML
@@ -25,9 +25,10 @@ public class IngredientController {
     public Button addIngredient;
     @FXML
     public ListView<Ingredient> ingredientsListView;
-    public ListView<Ingredient> getIngredientsListView() {
-        return ingredientsListView;
-    }
+    @FXML
+    public RadioButton inGrams;
+    @FXML
+    public RadioButton inMilliliters;
     @FXML
     public Button delIngredient;
     @FXML
@@ -36,13 +37,17 @@ public class IngredientController {
     public Button refreshIngredientsListView;
 
     GenList<Ingredient> ingredientList = new GenList();
+    public ListView<Ingredient> getIngredientsListView() {
+        return ingredientsListView;
+    }
 
     public void addIngredient(ActionEvent actionEvent) {
         if (ingredientName != null && ingredientTextDesc != null && calories != null) {
-            Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), Integer.parseInt(calories.getText()));
+            Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), Integer.parseInt(calories.getText()), ingredientRadioButtonChoice() );
             //Need to convert from int to String. Can't wrap for some reason
             ingredientsListView.getItems().add(I); //adds the ingredient to the list view
             ingredientList.addLast(I); //adds the ingredient to the ingredientList linkedlist
+            recipeControl.ingredientsToAddListView.getItems().add(I);
             ingredientName.clear();
             ingredientTextDesc.clear();
             calories.clear();
@@ -68,5 +73,13 @@ public class IngredientController {
     public void refreshIngredientListView(ActionEvent actionEvent) {
         ingredientsListView.getItems().clear(); //deletes listview content
         ingredientList.iterate(getIngredientsListView()); //iterates over each element in the bakeygoods list and adds each element to the listview.
+    }
+
+    public String ingredientRadioButtonChoice() {
+        if (inGrams.isSelected()) {
+            return "grams";
+        } else {
+            return "millilitres";
+        }
     }
 }

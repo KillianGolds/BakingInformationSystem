@@ -3,9 +3,12 @@ package com.example.bakinginformationsystem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
 
 public class Main extends Application {
 
@@ -16,6 +19,10 @@ public class Main extends Application {
         stage.setTitle("Baking Information System");
         stage.setScene(scene);
         stage.show();
+
+        ToggleGroup ingredientRadioButtons = new ToggleGroup();
+        ingredientControl.inMilliliters.setToggleGroup(ingredientRadioButtons);
+        ingredientControl.inGrams.setToggleGroup(ingredientRadioButtons);
     }
 
     public static void main(String[] args) {
