@@ -3,6 +3,7 @@ package com.example.bakinginformationsystem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
@@ -31,7 +32,11 @@ public class Main extends Application {
         recipeControl.quantitySelection.setVisible(false);
         recipeControl.quantitySelection.setManaged(false);
         recipeControl.ingredientsToAddListView.setPrefSize(302.5, 132);
+
+
+
     }
+
 
     public static void main(String[] args) {
         launch();

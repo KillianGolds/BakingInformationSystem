@@ -82,9 +82,9 @@ public class IngredientController implements Initializable {
 
     public String ingredientRadioButtonChoice() {
         if (inGrams.isSelected()) {
-            return "grams";
+            return "Grams";
         } else {
-            return "millilitres";
+            return "Millilitres";
         }
     }
 }

@@ -33,6 +33,6 @@ public class BakeryGood {
 
     @Override
     public String toString() {
-        return "Type: "+goodType+", Name: "+itemName+", Country of Origin: "+origin+".\n"+ "Description: "+textDesc+".\n"+"Image URL: "+imageURL;
+        return "Name: "+itemName+", Type: "+goodType+", Country of Origin: "+origin+".\n"+ "Description: "+textDesc+".\n"+"Image URL: "+imageURL;
     }
 }
