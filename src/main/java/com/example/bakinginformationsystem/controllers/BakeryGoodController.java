@@ -2,6 +2,8 @@ package com.example.bakinginformationsystem.controllers;
 
 import com.example.bakinginformationsystem.BakeryGood;
 import com.example.bakinginformationsystem.GenList;
+import com.example.bakinginformationsystem.Ingredient;
+import com.example.bakinginformationsystem.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -78,6 +81,7 @@ public class BakeryGoodController implements Initializable {
     public void deleteAllBakeryItem(ActionEvent actionEvent) {
         bakeryGoodList.clear(); //clears all elements from generic list.
         goodsListView.getItems().clear(); //^^ ^^ ^^ from list view.
+        recipeControl.bakeryGoodChoiceBox.getItems().clear();
     }
 
     //deletes the bakery goods listview and repopulates it from the generic linked list
@@ -85,4 +89,28 @@ public class BakeryGoodController implements Initializable {
         goodsListView.getItems().clear(); //deletes listview content
         bakeryGoodList.iterate(getGoodsListView()); //iterates over each element in the bakeygoods list and adds each element to the listview.
     }
+
+//    static final class ListContainer genericLists {
+//        GenList<BakeryGood> bakeryGoodGenList;
+//        GenList<Recipe> recipeGenList;
+//        GenList<Ingredient> ingredientGenList;
+//    }
+//
+//
+//
+//    public void save() throws Exception{
+//        ObjectOutputStream out=new ObjectOutputStream(new FileOutputStream(new File(fileName())));
+//        out.writeObject(genericList);
+//        out.close();
+//    }
+//
+//    @SuppressWarnings("unchecked")
+//    public void load() throws Exception{
+//        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File((fileName()))));
+//        CONTENT = (Main.Content) in.readObject();
+//        in.close();
+//        populateContent();
+//    }
+//
+//    public String fileName(){return "BakerySystem.dat";}
 }

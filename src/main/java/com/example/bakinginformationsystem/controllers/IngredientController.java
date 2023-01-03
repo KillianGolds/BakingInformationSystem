@@ -72,6 +72,7 @@ public class IngredientController implements Initializable {
     public void deleteAllIngredients(ActionEvent actionEvent) {
         ingredientList.clear(); //clears all elements from generic list.
         ingredientsListView.getItems().clear(); //^^ ^^ ^^ from list view.
+        recipeControl.ingredientsToAddListView.getItems().clear();
     }
 
     public void refreshIngredientListView(ActionEvent actionEvent) {

@@ -60,7 +60,6 @@ public class Ingredient {
     }
 
     //Methods
-    @Override
     public String toString(){
         return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories + ", Measurement Unit: " + measurementUnit;
     }

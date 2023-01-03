@@ -24,7 +24,7 @@ public class RecipeController implements Initializable {
     @FXML
     public ListView<Ingredient> ingredientsToAddListView;
     @FXML
-    public ListView<String> ingredientsAddedListView;
+    public ListView<Ingredient> ingredientsAddedListView;
     @FXML
     public Button addToChosenIngredients;
     @FXML
@@ -92,6 +92,7 @@ public class RecipeController implements Initializable {
 
     //TODO Still need to finish adding the recipe once finished with selecting ingredients will have to decide upon how we handle the data structure.
     //TODO possibly changing the recipeListView to a tree list but will need a lot of nested generic linked listing work done, still figuring out
+    //TODO after adding a recipe to its generic list, clear chosenIngredient listview
     public void addRecipe(ActionEvent actionEvent) {
     }
 
@@ -115,8 +116,6 @@ public class RecipeController implements Initializable {
         recipeList.iterate(getRecipeListView()); //iterates over each element in the recipe list and adds each element to the listview.
     }
 
-
-
     //Method changed recipe scene to prompt user to input the quantity of an ingredient after selecting an ingredient
     public void addToChosenIngredientsListView(ActionEvent actionEvent) {
         if(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem()!=null && ingredientsToAddListView.getSelectionModel().getSelectedItem()!=null){
@@ -139,7 +138,7 @@ public class RecipeController implements Initializable {
     public void quantityPassed(Ingredient I) {
         Ingredient Ing = ingredientControl.ingredientList.find(I);
         Ing.setQuantity(Double.parseDouble(enteredQuantity.getText()));
-        ingredientsAddedListView.getItems().add(Ing.toString2());
+        ingredientsAddedListView.getItems().add(Ing);
         recipeControl.quantitySelection.setVisible(false);
         recipeControl.quantitySelection.setManaged(false);
         ingredientsToAddListView.setManaged(true);

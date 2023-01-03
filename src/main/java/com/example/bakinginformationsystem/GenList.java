@@ -129,5 +129,14 @@ public class GenList<object> {
         }
     }
 
+    public void iterateObjecttoString(ListView<String> specificListView) {
+        Node current = head;
+        while (current != null) {
+            specificListView.getItems().add(current.data.toString());
+            current = current.next;
+        }
+    }
+
+
     //possibly more methods needed here WIP.
 }
