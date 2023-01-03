@@ -37,4 +37,19 @@ public class SearchController {
 
 
     }
+
+    public void search(ActionEvent actionEvent) {
+    }
+
+    public void viewAll(ActionEvent actionEvent) {
+    }
+
+    public void viewBakedGoods(ActionEvent actionEvent) {
+    }
+
+    public void viewIngredients(ActionEvent actionEvent) {
+    }
+
+    public void viewRecipes(ActionEvent actionEvent) {
+    }
 }
