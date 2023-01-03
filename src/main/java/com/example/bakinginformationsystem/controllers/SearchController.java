@@ -1,13 +1,11 @@
 package com.example.bakinginformationsystem.controllers;
 
 import com.example.bakinginformationsystem.GenList;
-import com.example.bakinginformationsystem.Recipe;
+import com.example.bakinginformationsystem.Search;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 
 public class SearchController {
     public static RecipeController searchControl;
@@ -26,11 +24,9 @@ public class SearchController {
     @FXML
     public Button refreshSearchListView;
 
-    public void setViewBakedGoods(ActionEvent actionEvent) {
+    public ListView<String> getSearchListView() {
+        return searchListView;
     }
-
-
-
 
     //deletes the search listview and repopulates it from the generic linked list
     public void refreshRecipeListView(ActionEvent actionEvent) {
