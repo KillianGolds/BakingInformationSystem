@@ -4,6 +4,7 @@ import com.example.bakinginformationsystem.BakeryGood;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
 import static com.example.bakinginformationsystem.controllers.BakeryGoodController.bakeryGoodControl;
@@ -41,12 +42,26 @@ public class SearchController {
     }
 
     public void viewAll(ActionEvent actionEvent) {
+        searchListView.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setDisable(true);
+                } else {
+                    setText(item);
+                    // Disable selection for certain items
+                    setDisable(item.equals("Bakery Goods:\n=======================================================") || item.equals("\nIngredients:\n=======================================================") || item.equals("\nRecipes:\n======================================================="));
+                }
+            }
+        });
         searchListView.getItems().clear(); //deletes listview content
         searchListView.getItems().add("Bakery Goods:\n=======================================================");
         bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
-        searchListView.getItems().add( "\n\nIngredients:\n=======================================================");
+        searchListView.getItems().add( "\nIngredients:\n=======================================================");
         ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
-        searchListView.getItems().add("\n\nRecipes:\n=======================================================");
+        searchListView.getItems().add("\nRecipes:\n=======================================================");
 
         //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
 

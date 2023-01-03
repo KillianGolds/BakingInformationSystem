@@ -65,6 +65,6 @@ public class Ingredient {
     }
 
     public String toString2(){
-        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories +"\nQuantity: "+quantity+" "+measurementUnit;
+        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories +"\nQuantity: "+quantity+" "+measurementUnit.toLowerCase();
     }
 }

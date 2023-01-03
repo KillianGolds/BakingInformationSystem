@@ -22,10 +22,6 @@ public class RecipeController implements Initializable {
     @FXML
     public ChoiceBox<String> bakeryGoodChoiceBox;
     @FXML
-    public ListView<Ingredient> ingredientsToAddListView;
-    @FXML
-    public ListView<Ingredient> ingredientsAddedListView;
-    @FXML
     public Button addToChosenIngredients;
     @FXML
     public Button removeFromChosenIngredients;
@@ -33,6 +29,9 @@ public class RecipeController implements Initializable {
     public Button addRecipe;
     @FXML
     public ListView<Recipe> recipeListView;
+    public ListView<Recipe> getRecipeListView() {
+        return recipeListView;
+    }
     @FXML
     public Button delRecipe;
     @FXML
@@ -45,6 +44,9 @@ public class RecipeController implements Initializable {
     public Button enterQuantity;
     @FXML
     public TextField enteredQuantity;
+
+    @FXML
+    public Label ingredientName;
 
     public Label getIngredientName() {
         return ingredientName;
@@ -63,14 +65,14 @@ public class RecipeController implements Initializable {
         this.selectedIngredient = selectedIngredient;
     }
 
-    @FXML
-    public Label ingredientName;
-
-
-    public ListView<Recipe> getRecipeListView() {
-        return recipeListView;
-    }
     GenList<Recipe> recipeList = new GenList();
+
+    @FXML
+    public ListView<Ingredient> ingredientsToAddListView;
+    @FXML
+    public ListView<Ingredient> ingredientsAddedListView;
+
+
 
 
 
@@ -131,6 +133,18 @@ public class RecipeController implements Initializable {
     }
     //Method passed the chosen ingredient onto the next method once the enter button is pressed.
     public void enterClicked(ActionEvent actionEvent) {
+        ingredientsAddedListView.setCellFactory(ingredientsAddedListView -> new ListCell<Ingredient>() {
+            @Override
+            protected void updateItem(Ingredient ingredient, boolean empty) {
+                super.updateItem(ingredient, empty);
+                if (empty || ingredient == null) {
+                    setText(null);
+                } else {
+                    // Call the desired toString() method of the Ingredient object
+                    setText(ingredient.toString2());
+                }
+            }
+        });
         quantityPassed(getSelectedIngredient());
     }
 
