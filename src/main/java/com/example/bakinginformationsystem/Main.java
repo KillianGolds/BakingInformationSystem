@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
+import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
 
 public class Main extends Application {
 
@@ -23,6 +24,13 @@ public class Main extends Application {
         ToggleGroup ingredientRadioButtons = new ToggleGroup();
         ingredientControl.inMilliliters.setToggleGroup(ingredientRadioButtons);
         ingredientControl.inGrams.setToggleGroup(ingredientRadioButtons);
+
+        ingredientControl.quantity.setVisible(false);
+        ingredientControl.quantity.setText("0");
+
+        recipeControl.quantitySelection.setVisible(false);
+        recipeControl.quantitySelection.setManaged(false);
+        recipeControl.ingredientsToAddListView.setPrefSize(302.5, 132);
     }
 
     public static void main(String[] args) {

@@ -33,6 +33,19 @@ public class GenList<object> {
         return size == 0;
     }
 
+    public int getIndexOf(object data) {
+        int index = 0;
+        Node current = head;
+        while (current != null) {
+            if (current.data.equals(data)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
+
     //delete specific object from list by passing an object and searching for it within the list deleting if present doing nothing if not.
     public boolean delete(object data) {
         if (isEmpty()) {
@@ -97,6 +110,17 @@ public class GenList<object> {
         return data;
     }
 
+    public object find(object data) {
+        Node current = head;
+        while (current != null) {
+            if (current.data.equals(data)) {
+                return current.data;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
     public void iterate(ListView<object> specificListView) {
         Node current = head;
         while (current != null) {
@@ -104,14 +128,6 @@ public class GenList<object> {
             current = current.next;
         }
     }
-
-    public void iterateChoiceBox(){
-        Node current = head;
-        while (current != null) {
-        specificListView.getItems().add(current.data);
-        current = current.next;
-    }
-}
 
     //possibly more methods needed here WIP.
 }

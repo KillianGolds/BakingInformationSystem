@@ -137,7 +137,10 @@
                   </ListView>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="673.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="quantity" prefHeight="25.0" prefWidth="0.0" />
+                           </children></HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0">
                            <children>
                               <Button fx:id="delIngredient" mnemonicParsing="false" onAction="#deleteIngredient" text="Delete Ingredient">

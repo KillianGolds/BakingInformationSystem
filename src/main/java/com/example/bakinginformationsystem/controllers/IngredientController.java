@@ -35,15 +35,19 @@ public class IngredientController implements Initializable {
     public Button clearIngredients;
     @FXML
     public Button refreshIngredientsListView;
-
+    @FXML
+    public TextField quantity;
     GenList<Ingredient> ingredientList = new GenList();
+    public GenList<Ingredient> getIngredientList() {
+        return ingredientList;
+    }
     public ListView<Ingredient> getIngredientsListView() {
         return ingredientsListView;
     }
 
     public void addIngredient(ActionEvent actionEvent) {
         if (ingredientName != null && ingredientTextDesc != null && calories != null) {
-            Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), Integer.parseInt(calories.getText()), ingredientRadioButtonChoice() );
+            Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), Integer.parseInt(calories.getText()), ingredientRadioButtonChoice(), Double.parseDouble(quantity.getText()));
             //Need to convert from int to String. Can't wrap for some reason
             ingredientsListView.getItems().add(I); //adds the ingredient to the list view
             ingredientList.addLast(I); //adds the ingredient to the ingredientList linkedlist

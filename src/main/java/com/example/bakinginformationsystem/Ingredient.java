@@ -7,29 +7,31 @@ public class Ingredient {
     private String ingredientDescription;
     private int calories;
     private String measurementUnit;
+    private double quantity;
 
     //Constructor
-    public Ingredient(String ingredientName, String ingredientDescription, int calories, String measurementUnit){
+    public Ingredient(String ingredientName, String ingredientDescription, int calories, String measurementUnit, double quantity){
         this.ingredientName = ingredientName;
         this.ingredientDescription = ingredientDescription;
         this.calories = calories;
         this.measurementUnit = measurementUnit;
+        this.quantity = quantity;
     }
 
     //Getters+Setters
-    public String getIngredientNameName() {
+    public String getIngredientName() {
         return ingredientName;
     }
 
-    public void setIngredientNameName(String ingrName) {
+    public void setIngredientName(String ingredientName) {
         this.ingredientName = ingredientName;
     }
 
-    public String getIngredientNameDesc() {
+    public String getIngredientDescription() {
         return ingredientDescription;
     }
 
-    public void setIngredientDescription(String ingrDesc) {
+    public void setIngredientDescription(String ingredientDescription) {
         this.ingredientDescription = ingredientDescription;
     }
 
@@ -49,9 +51,21 @@ public class Ingredient {
         this.measurementUnit = measurementUnit;
     }
 
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
     //Methods
     @Override
     public String toString(){
         return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories + ", Measurement Unit: " + measurementUnit;
+    }
+
+    public String toString2(){
+        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories +"\nQuantity: "+quantity+" "+measurementUnit;
     }
 }

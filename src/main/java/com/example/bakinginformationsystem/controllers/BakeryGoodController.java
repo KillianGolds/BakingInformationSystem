@@ -70,6 +70,7 @@ public class BakeryGoodController implements Initializable {
     public void deleteBakeryItem(ActionEvent actionEvent) {
         BakeryGood BGtoDelete = goodsListView.getSelectionModel().getSelectedItem();
         goodsListView.getItems().remove(BGtoDelete); //deletes the selected bakerygood object from the list view
+        recipeControl.bakeryGoodChoiceBox.getItems().remove(bakeryGoodList.getIndexOf(BGtoDelete));
         bakeryGoodList.delete(BGtoDelete);
     }
 
@@ -84,6 +85,4 @@ public class BakeryGoodController implements Initializable {
         goodsListView.getItems().clear(); //deletes listview content
         bakeryGoodList.iterate(getGoodsListView()); //iterates over each element in the bakeygoods list and adds each element to the listview.
     }
-
-
 }
