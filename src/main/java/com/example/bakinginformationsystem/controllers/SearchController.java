@@ -1,14 +1,16 @@
 package com.example.bakinginformationsystem.controllers;
 
-import com.example.bakinginformationsystem.GenList;
-import com.example.bakinginformationsystem.Search;
+import com.example.bakinginformationsystem.BakeryGood;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
+import static com.example.bakinginformationsystem.controllers.BakeryGoodController.bakeryGoodControl;
+import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
+
 public class SearchController {
-    public static RecipeController searchControl;
+    public static SearchController searchControl;
     @FXML
     public Button viewAll;
     @FXML
@@ -20,8 +22,6 @@ public class SearchController {
     @FXML
     public ListView<String> searchListView;
     @FXML
-    public GenList<String> searchList;
-    @FXML
     public Button refreshSearchListView;
 
     public ListView<String> getSearchListView() {
@@ -29,8 +29,12 @@ public class SearchController {
     }
 
     //deletes the search listview and repopulates it from the generic linked list
-    public void refreshRecipeListView(ActionEvent actionEvent) {
+    public void refreshSearchListView(ActionEvent actionEvent) {
         searchListView.getItems().clear(); //deletes listview content
-        searchList.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        bakeryGoodControl.bakeryGoodList.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        ingredientControl.ingredientList.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+
+
     }
 }
