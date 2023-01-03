@@ -31,8 +31,8 @@ public class SearchController {
     //deletes the search listview and repopulates it from the generic linked list
     public void refreshSearchListView(ActionEvent actionEvent) {
         searchListView.getItems().clear(); //deletes listview content
-        bakeryGoodControl.bakeryGoodList.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
-        ingredientControl.ingredientList.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
         //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
 
 
