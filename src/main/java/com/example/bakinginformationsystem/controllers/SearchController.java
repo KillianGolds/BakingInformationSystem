@@ -35,7 +35,6 @@ public class SearchController {
         ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
         //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
 
-
     }
 
     public void search(ActionEvent actionEvent) {
