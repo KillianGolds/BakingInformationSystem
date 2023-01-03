@@ -42,13 +42,28 @@ public class SearchController {
     }
 
     public void viewAll(ActionEvent actionEvent) {
+        searchListView.getItems().clear(); //deletes listview content
+        searchListView.getItems().add("Bakery Goods:\n=======================================================");
+        bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        searchListView.getItems().add( "\n\nIngredients:\n=======================================================");
+        ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        searchListView.getItems().add("\n\nRecipes:\n=======================================================");
+
+        //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+
     }
 
     public void viewBakedGoods(ActionEvent actionEvent) {
+        searchListView.getItems().clear(); //deletes listview content
+        bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+
     }
 
     public void viewIngredients(ActionEvent actionEvent) {
+        searchListView.getItems().clear(); //deletes listview content
+        ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
     }
+
 
     public void viewRecipes(ActionEvent actionEvent) {
     }
