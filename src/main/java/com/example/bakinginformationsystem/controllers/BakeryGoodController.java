@@ -47,7 +47,7 @@ public class BakeryGoodController implements Initializable {
     @FXML
     public Button refreshGoodsListView;
 
-    GenList<BakeryGood> bakeryGoodList = new GenList();
+    public GenList<BakeryGood> bakeryGoodList = new GenList();
 
 
     public void initialize(URL url, ResourceBundle resourceBundle){

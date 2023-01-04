@@ -145,6 +145,27 @@ public class GenList<object> {
         }
     }
 
+    public void addAllElementsToListFromListAsString(GenList<String> otherList) {
+        Node current = head;
+        while (current != null) {
+            otherList.addLast(current.data.toString());
+            current = current.next;
+        }
+    }
+
+    public void search(String searchQuery, ListView<String> listView) {
+        GenList<String> searchResults = new GenList<>();
+        Node current = head;
+        while (current != null) {
+            if (current.data.toString().contains(searchQuery)) {
+                searchResults.addLast(current.data.toString());
+            }
+            current = current.next;
+        }
+        listView.getItems().clear();
+        searchResults.addAll(listView);
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\nIngredients:\n");

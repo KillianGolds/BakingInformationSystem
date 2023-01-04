@@ -20,7 +20,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="42.0" prefWidth="673.0">
                      <children>
-                        <TextField fx:id="searchBox" onAction="#search" prefHeight="25.0" prefWidth="358.0">
+                        <TextField fx:id="searchBox" prefHeight="25.0" prefWidth="358.0">
                            <HBox.margin>
                               <Insets right="5.0" top="5.0" />
                            </HBox.margin>

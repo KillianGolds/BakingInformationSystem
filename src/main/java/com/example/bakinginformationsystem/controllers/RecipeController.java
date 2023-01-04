@@ -67,7 +67,7 @@ public class RecipeController implements Initializable {
         this.selectedIngredient = selectedIngredient;
     }
 
-    GenList<Recipe> recipeList = new GenList<>();
+    public GenList<Recipe> recipeList = new GenList<>();
 
     GenList<Ingredient> chosenIngredients = new GenList<>();
 

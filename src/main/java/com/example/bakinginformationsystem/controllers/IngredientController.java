@@ -37,7 +37,7 @@ public class IngredientController implements Initializable {
     public Button refreshIngredientsListView;
     @FXML
     public TextField quantity;
-    GenList<Ingredient> ingredientList = new GenList();
+    public GenList<Ingredient> ingredientList = new GenList();
     public GenList<Ingredient> getIngredientList() {
         return ingredientList;
     }
