@@ -30,7 +30,6 @@ public class RecipeController implements Initializable {
     public Button addRecipe;
     @FXML
     public ListView<Recipe> recipeListView;
-
     public ListView<Recipe> getRecipeListView() {
         return recipeListView;
     }
@@ -46,7 +45,6 @@ public class RecipeController implements Initializable {
     public Button enterQuantity;
     @FXML
     public TextField enteredQuantity;
-
     @FXML
     public Label ingredientName;
 
@@ -109,64 +107,16 @@ public class RecipeController implements Initializable {
 
 //    Method for adding a recipe to the listview and linkedlist
     public void addRecipe(ActionEvent actionEvent) {
-        chosenIngredients.addAll(ingredientsAddedListView);
-        Recipe RP = new Recipe(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem(), getChosenIngredients());
+
+        Recipe RP = new Recipe(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem());
+        for (Ingredient item : ingredientsAddedListView.getItems()){
+            RP.addIngredient(item);
+        }
         recipeListView.getItems().add(RP); //adds the recipe to the list view
         recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
         ingredientsAddedListView.getItems().clear();
         System.out.print(RP);
     }
-
-//    public void addRecipe(ActionEvent actionEvent) {
-//        chosenIngredients.addAll(ingredientsAddedListView);
-//        Recipe RP = new Recipe(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem(), getChosenIngredients());
-//
-//        ObservableList<TreeItem<String>> rootItems = recipeTreeView.getRoot().getChildren();
-//        int numTrees = rootItems.size();
-//        int treeNum = numTrees+1;
-//        String rootName = "rootItem"+treeNum;
-//
-//        if(numTrees > 0){
-//            TreeItem<Object> rootName = new TreeItem<>(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem());
-//            rootName.setExpanded(true);
-//            recipeTreeView.setRoot(rootName);
-//
-//            TreeItem<Object> childItem = new TreeItem<>("Recipe:");
-//            rootName.getChildren().add(childItem);
-//
-//            for (int i = 0; i < chosenIngredients.size(); i++ ) {
-//                TreeItem<Object> grandchildItem = new TreeItem<>(chosenIngredients.findByIndex(i));
-//                childItem.getChildren().add(grandchildItem);
-//            }
-//        }
-//
-//        TreeItem<Object> rootItem = new TreeItem<>(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem());
-//        rootItem.setExpanded(true);
-//        recipeTreeView.setRoot(rootItem);
-//
-//        TreeItem<Object> childItem = new TreeItem<>("Recipe:");
-//        rootItem.getChildren().add(childItem);
-//
-//        for (int i = 0; i < chosenIngredients.size(); i++ ) {
-//            TreeItem<Object> grandchildItem = new TreeItem<>(chosenIngredients.findByIndex(i));
-//            childItem.getChildren().add(grandchildItem);
-//        }
-//
-////        TreeItem<Object> grandchildItem = new TreeItem<>(Ingredient);
-////        childItem.getChildren().add(grandchildItem);
-//
-//
-//        recipeListView.getItems().add(RP); //adds the recipe to the list view
-//        recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
-//        System.out.print(RP);
-//    }
-
-    //TODO Still need to finish adding the recipe once finished with selecting ingredients will have to decide upon how we handle the data structure.
-    //TODO possibly changing the recipeListView to a tree list but will need a lot of nested generic linked listing work done, still figuring out
-    //TODO after adding a recipe to its generic list, clear chosenIngredient listview
-//    public void addRecipe(ActionEvent actionEvent) {
-//    }
-
 
     //Method for deleting an item from the list view
     public void deleteRecipe(ActionEvent actionEvent) {
@@ -202,18 +152,6 @@ public class RecipeController implements Initializable {
     }
     //Method passed the chosen ingredient onto the next method once the enter button is pressed.
     public void enterClicked(ActionEvent actionEvent) {
-        ingredientsAddedListView.setCellFactory(ingredientsAddedListView -> new ListCell<Ingredient>() {
-            @Override
-            protected void updateItem(Ingredient ingredient, boolean empty) {
-                super.updateItem(ingredient, empty);
-                if (empty || ingredient == null) {
-                    setText(null);
-                } else {
-                    // Call the desired toString() method of the Ingredient object
-                    setText(ingredient.toString2());
-                }
-            }
-        });
         quantityPassed(getSelectedIngredient());
     }
 

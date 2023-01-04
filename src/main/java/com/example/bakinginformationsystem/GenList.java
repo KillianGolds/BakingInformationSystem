@@ -1,9 +1,7 @@
 package com.example.bakinginformationsystem;
 
 import javafx.collections.ObservableList;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
-
 import java.util.NoSuchElementException;
 
 //to be done
@@ -153,22 +151,20 @@ public class GenList<object> {
         }
     }
 
-    public void search(String searchQuery, ListView<String> listView) {
-        GenList<String> searchResults = new GenList<>();
+    public void search(String query, ListView<String> listView) {
+        listView.getItems().clear();
         Node current = head;
         while (current != null) {
-            if (current.data.toString().contains(searchQuery)) {
-                searchResults.addLast(current.data.toString());
+            if (current.data.toString().contains(query)) {
+                listView.getItems().add(current.data.toString());
             }
             current = current.next;
         }
-        listView.getItems().clear();
-        searchResults.addAll(listView);
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\nIngredients:\n");
+        sb.append("\n");
         Node current = head;
         while (current != null) {
             sb.append(current.data);
@@ -177,11 +173,11 @@ public class GenList<object> {
             }
             current = current.next;
         }
-        sb.append("\n==================================");
+        sb.append("\n");
         return sb.toString();
     }
 
-    public object findByIndex(int index) {
+    public object get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }

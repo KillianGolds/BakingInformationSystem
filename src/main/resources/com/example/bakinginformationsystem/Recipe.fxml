@@ -159,11 +159,11 @@
                         <Insets top="2.5" />
                      </VBox.margin>
                   </Button>
-                  <TreeView fx:id="recipeTreeView" prefHeight="211.0" prefWidth="673.0">
+                  <ListView fx:id="recipeListView" prefHeight="211.0" prefWidth="673.0">
                      <VBox.margin>
                         <Insets top="2.5" />
                      </VBox.margin>
-                  </TreeView>
+                  </ListView>
                   <Separator prefWidth="200.0">
                      <VBox.margin>
                         <Insets top="2.0" />

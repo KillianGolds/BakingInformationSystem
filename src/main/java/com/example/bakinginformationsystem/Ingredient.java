@@ -60,11 +60,13 @@ public class Ingredient {
     }
 
     //Methods
+    @Override
     public String toString(){
-        return "Name: " + ingredientName +", Calories: " + calories + ", Measurement Unit: " + measurementUnit +"\nTextual Description: " + ingredientDescription;
+        return "Ingredient: " + ingredientName + "\nCalories: " + calories +", Quantity: "+quantity+" "+measurementUnit.toLowerCase()+"\nTextual Description: " + ingredientDescription;
+
     }
 
     public String toString2(){
-        return "Name: " + ingredientName + ", Calories: " + calories +"\nQuantity: "+quantity+" "+measurementUnit.toLowerCase()+"\nTextual Description:" + ingredientDescription;
+        return "Name: " + ingredientName +", Calories: " + calories + ", Measurement Unit: " + measurementUnit +"\nTextual Description: " + ingredientDescription;
     }
 }

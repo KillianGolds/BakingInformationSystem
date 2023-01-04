@@ -1,9 +1,11 @@
 package com.example.bakinginformationsystem;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
+
+
         ToggleGroup ingredientRadioButtons = new ToggleGroup();
         ingredientControl.inMilliliters.setToggleGroup(ingredientRadioButtons);
         ingredientControl.inGrams.setToggleGroup(ingredientRadioButtons);
@@ -34,22 +38,29 @@ public class Main extends Application {
         recipeControl.quantitySelection.setVisible(false);
         recipeControl.quantitySelection.setManaged(false);
         recipeControl.ingredientsToAddListView.setPrefSize(302.5, 132);
-
         recipeControl.onStart();
-        
-//        searchControl.searchBox.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-//            searchControl.searchListView.getItems().clear();
-//            for(String item : mainControl.getAllItems())
-//                if(item.contains(newValue)) {
-//                    mainControl.results.addLast(item);
-//                }
-//        });
 
+        searchControl.onStart();
 
-        searchControl.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
-            mainControl.searchLists.search(newValue, searchControl.getSearchListView());
+        recipeControl.ingredientsToAddListView.setCellFactory(ingredientsAddedListView -> new ListCell<Ingredient>() {
+            @Override
+            protected void updateItem(Ingredient ingredient, boolean empty) {
+                super.updateItem(ingredient, empty);
+                if (empty || ingredient == null) {
+                    setText(null);
+                } else {
+                    // Call the desired toString() method of the Ingredient object
+                    setText(ingredient.toString2());
+                }
+            }
         });
 
+        searchControl.searchLabel.setVisible(false);
+        searchControl.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            String query = searchControl.searchBox.getText();
+            searchControl.search();
+            searchControl.searchLists.search(query, searchControl.searchListView);
+        });
     }
 
 

@@ -47,6 +47,18 @@ public class IngredientController implements Initializable {
 
     public void addIngredient(ActionEvent actionEvent) {
         if (ingredientName != null && ingredientTextDesc != null && calories != null) {
+            ingredientsListView.setCellFactory(ingredientsAddedListView -> new ListCell<Ingredient>() {
+                @Override
+                protected void updateItem(Ingredient ingredient, boolean empty) {
+                    super.updateItem(ingredient, empty);
+                    if (empty || ingredient == null) {
+                        setText(null);
+                    } else {
+                        // Call the desired toString() method of the Ingredient object
+                        setText(ingredient.toString2());
+                    }
+                }
+            });
             Ingredient I = new Ingredient(ingredientName.getText(), ingredientTextDesc.getText(), Integer.parseInt(calories.getText()), ingredientRadioButtonChoice(), Double.parseDouble(quantity.getText()));
             //Need to convert from int to String. Can't wrap for some reason
             ingredientsListView.getItems().add(I); //adds the ingredient to the list view
@@ -64,8 +76,8 @@ public class IngredientController implements Initializable {
 
     public void deleteIngredient(ActionEvent actionEvent) {
         Ingredient ItoDelete = ingredientsListView.getSelectionModel().getSelectedItem();
-        //Not sure why it's telling me "Ingredient" isn't an object
         ingredientsListView.getItems().remove(ItoDelete); //deletes the selected Ingredient object from the list view
+        recipeControl.ingredientsToAddListView.getItems().remove(ItoDelete);
         ingredientList.delete(ItoDelete);
     }
 

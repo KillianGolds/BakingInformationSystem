@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.SearchController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.SearchController">
    <center>
       <VBox prefHeight="490.0" prefWidth="673.0" BorderPane.alignment="CENTER">
          <children>
@@ -20,50 +20,95 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="42.0" prefWidth="673.0">
                      <children>
-                        <TextField fx:id="searchBox" prefHeight="25.0" prefWidth="358.0">
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
                            <HBox.margin>
-                              <Insets right="5.0" top="5.0" />
+                              <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                           </HBox.margin>
+                        </Separator>
+                        <TextField fx:id="searchBox" prefHeight="25.0" prefWidth="236.0">
+                           <HBox.margin>
+                              <Insets />
                            </HBox.margin>
                         </TextField>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                           </HBox.margin>
+                        </Separator>
                         <Button fx:id="viewAll" mnemonicParsing="false" onAction="#viewAll" text="View All">
                            <HBox.margin>
-                              <Insets right="5.0" top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Button>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                           </HBox.margin>
+                        </Separator>
                         <Button fx:id="viewBakedGoods" mnemonicParsing="false" onAction="#viewBakedGoods" text="Baked Goods">
                            <HBox.margin>
-                              <Insets right="5.0" top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Button>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                           </HBox.margin>
+                        </Separator>
                         <Button fx:id="viewIngredients" mnemonicParsing="false" onAction="#viewIngredients" text="Ingredients">
                            <HBox.margin>
-                              <Insets right="5.0" top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Button>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                           </HBox.margin>
+                        </Separator>
                         <Button fx:id="viewRecipes" mnemonicParsing="false" onAction="#viewRecipes" text="Recipes">
                            <HBox.margin>
-                              <Insets top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Button>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                           </HBox.margin>
+                        </Separator>
                      </children>
                   </HBox>
-                  <Label fx:id="searchLabel" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" text="Label" textAlignment="CENTER">
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="searchLabel" alignment="CENTER" prefHeight="23.0" prefWidth="196.0" text="Label" textAlignment="CENTER">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="searchListView" prefHeight="408.0" prefWidth="663.0">
+                  <ListView fx:id="searchListView" prefHeight="356.0" prefWidth="663.0">
                      <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
+                        <Insets left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </ListView>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="673.0">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0" />
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="414.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="50.0" prefWidth="196.0">
+                                 <children>
+                                    <Button fx:id="sortAlphabeticallyAscending" mnemonicParsing="false" onAction="#sortAlphaAscending" text="Sort Alphabetically Ascending" />
+                                    <Button fx:id="sortAlphabeticallyDescending" mnemonicParsing="false" onAction="#sortAlphaDescending" text="Sort Alphabetically Descending" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="50.0" prefWidth="150.0">
+                                 <children>
+                                    <Button fx:id="sortCaloriesAscending" mnemonicParsing="false" text="Sort Calories Ascending" />
+                                    <Button fx:id="sortCaloriesDescending" mnemonicParsing="false" text="Sort Calories Descending" />
+                                 </children>
+                              </VBox>
+                           </children></HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Button fx:id="refreshSearchListView" mnemonicParsing="false" onAction="#refreshSearchListView" text="Refresh List" />
