@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
@@ -156,14 +155,10 @@
                   </Separator>
                   <Button fx:id="addRecipe" mnemonicParsing="false" onAction="#addRecipe" text="Finalise Recipe">
                      <VBox.margin>
-                        <Insets top="2.5" />
+                        <Insets bottom="2.5" top="2.5" />
                      </VBox.margin>
                   </Button>
-                  <TreeView fx:id="recipeTreeView" prefHeight="211.0" prefWidth="673.0">
-                     <VBox.margin>
-                        <Insets top="2.5" />
-                     </VBox.margin>
-                  </TreeView>
+                  <ListView fx:id="recipeListView" prefHeight="200.0" prefWidth="200.0" />
                   <Separator prefWidth="200.0">
                      <VBox.margin>
                         <Insets top="2.0" />

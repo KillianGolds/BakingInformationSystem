@@ -3,10 +3,8 @@ package com.example.bakinginformationsystem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
@@ -33,10 +31,10 @@ public class Main extends Application {
         recipeControl.quantitySelection.setManaged(false);
         recipeControl.ingredientsToAddListView.setPrefSize(302.5, 132);
 
+        recipeControl.onStart();
 
 
     }
-
 
     public static void main(String[] args) {
         launch();

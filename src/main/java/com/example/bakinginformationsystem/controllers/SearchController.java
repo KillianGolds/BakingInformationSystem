@@ -1,16 +1,18 @@
 package com.example.bakinginformationsystem.controllers;
 
-import com.example.bakinginformationsystem.BakeryGood;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static com.example.bakinginformationsystem.controllers.BakeryGoodController.bakeryGoodControl;
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
+import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
 
-public class SearchController {
+public class SearchController implements Initializable {
     public static SearchController searchControl;
     @FXML
     public Button viewAll;
@@ -29,41 +31,35 @@ public class SearchController {
         return searchListView;
     }
 
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        searchControl = this;
+    }
+
     //deletes the search listview and repopulates it from the generic linked list
     public void refreshSearchListView(ActionEvent actionEvent) {
-        searchListView.getItems().clear(); //deletes listview content
-        bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
-        ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
-        //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
-
-    }
-
-    public void search(ActionEvent actionEvent) {
-    }
-
-    public void viewAll(ActionEvent actionEvent) {
-        searchListView.setCellFactory(listView -> new ListCell<>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setDisable(true);
-                } else {
-                    setText(item);
-                    // Disable selection for certain items
-                    setDisable(item.equals("Bakery Goods:\n=======================================================") || item.equals("\nIngredients:\n=======================================================") || item.equals("\nRecipes:\n======================================================="));
-                }
-            }
-        });
         searchListView.getItems().clear(); //deletes listview content
         searchListView.getItems().add("Bakery Goods:\n=======================================================");
         bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
         searchListView.getItems().add( "\nIngredients:\n=======================================================");
         ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
         searchListView.getItems().add("\nRecipes:\n=======================================================");
+    }
 
-        //.iterate(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+    public void search(ActionEvent actionEvent) {
+        //TODO
+    }
+
+
+
+    public void viewAll(ActionEvent actionEvent) {
+        //TODO implement dividers being non selectable.
+        searchListView.getItems().clear(); //deletes listview content
+        searchListView.getItems().add("Bakery Goods:\n=======================================================");
+        bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        searchListView.getItems().add( "\nIngredients:\n=======================================================");
+        ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+        searchListView.getItems().add("\nRecipes:\n=======================================================");
+        recipeControl.recipeList.iterateObjecttoString(getSearchListView());
 
     }
 
@@ -76,9 +72,11 @@ public class SearchController {
     public void viewIngredients(ActionEvent actionEvent) {
         searchListView.getItems().clear(); //deletes listview content
         ingredientControl.ingredientList.iterateObjecttoString(getSearchListView()); //iterates over each element in the search list and adds each element to the listview.
+
     }
 
-
     public void viewRecipes(ActionEvent actionEvent) {
+        searchListView.getItems().clear(); //deletes listview content
+        recipeControl.recipeList.iterateObjecttoString(getSearchListView());
     }
 }

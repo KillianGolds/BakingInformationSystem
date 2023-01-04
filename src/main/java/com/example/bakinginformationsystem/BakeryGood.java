@@ -1,5 +1,9 @@
 package com.example.bakinginformationsystem;
 
+import javafx.css.converter.StringConverter;
+
+import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
+
 public class BakeryGood {
 
     private String goodType;
@@ -31,8 +35,9 @@ public class BakeryGood {
     public String getImageURL() {return imageURL;}
     public void setImageURL(String imageURL) {this.imageURL = imageURL;}
 
-    @Override
+
     public String toString() {
         return "Name: "+itemName+", Type: "+goodType+", Country of Origin: "+origin+".\n"+ "Description: "+textDesc+".\n"+"Image URL: "+imageURL;
     }
+
 }

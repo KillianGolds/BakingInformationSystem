@@ -26,15 +26,12 @@
                               <Insets right="25.0" />
                            </HBox.margin>
                         </Separator>
-                        <Label text="Type:">
+                        <Label text="Name:">
                            <font>
                               <Font size="14.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
                         </Label>
-                        <TextField fx:id="goodType" />
+                        <TextField fx:id="itemName" prefHeight="25.0" prefWidth="183.0" />
                         <Separator orientation="VERTICAL" prefHeight="200.0">
                            <HBox.margin>
                               <Insets left="25.0" />
@@ -54,13 +51,10 @@
                            <children>
                               <VBox alignment="TOP_CENTER" prefHeight="98.0" prefWidth="131.0">
                                  <children>
-                                    <Label text="Name:">
+                                    <Label text="Type:">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
-                                       <VBox.margin>
-                                          <Insets top="2.0" />
-                                       </VBox.margin>
                                     </Label>
                                     <Label prefHeight="20.0" prefWidth="124.0" text="Textual Description:" wrapText="true">
                                        <font>
@@ -74,7 +68,7 @@
                               </VBox>
                               <VBox prefHeight="98.0" prefWidth="179.0">
                                  <children>
-                                    <TextField fx:id="itemName" prefHeight="25.0" prefWidth="183.0" />
+                                    <TextField fx:id="goodType" />
                                     <TextArea fx:id="textDesc" prefHeight="85.0" prefWidth="179.0">
                                        <VBox.margin>
                                           <Insets top="5.0" />

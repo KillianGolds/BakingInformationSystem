@@ -1,5 +1,6 @@
 package com.example.bakinginformationsystem.controllers;
 
+import com.example.bakinginformationsystem.BakeryGood;
 import com.example.bakinginformationsystem.GenList;
 import com.example.bakinginformationsystem.Ingredient;
 import com.example.bakinginformationsystem.Recipe;
@@ -8,19 +9,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
 
-//to be done
+//TODO tidy up recipe output
 public class RecipeController implements Initializable {
 
     public static RecipeController recipeControl;
     @FXML
-    public ChoiceBox<String> bakeryGoodChoiceBox;
+    public ChoiceBox<BakeryGood> bakeryGoodChoiceBox;
     @FXML
     public Button addToChosenIngredients;
     @FXML
@@ -29,6 +30,7 @@ public class RecipeController implements Initializable {
     public Button addRecipe;
     @FXML
     public ListView<Recipe> recipeListView;
+
     public ListView<Recipe> getRecipeListView() {
         return recipeListView;
     }
@@ -65,38 +67,105 @@ public class RecipeController implements Initializable {
         this.selectedIngredient = selectedIngredient;
     }
 
-    GenList<Recipe> recipeList = new GenList();
+    GenList<Recipe> recipeList = new GenList<>();
+
+    GenList<Ingredient> chosenIngredients = new GenList<>();
+
+    public GenList<Ingredient> getChosenIngredients() {
+        return chosenIngredients;
+    }
+
+    public void setChosenIngredients(GenList<Ingredient> chosenIngredients) {
+        this.chosenIngredients = chosenIngredients;
+    }
 
     @FXML
     public ListView<Ingredient> ingredientsToAddListView;
     @FXML
     public ListView<Ingredient> ingredientsAddedListView;
 
+    public void onStart() {
+        bakeryGoodChoiceBox.setConverter(new StringConverter<BakeryGood>() {
+            @Override
+            public String toString(BakeryGood bakeryGood) {
+                if (bakeryGood != null) {
+                    return bakeryGood.getItemName();
+                }else{
+                    return "";
+                }
+            }
+            @Override
+            public BakeryGood fromString(String string) {
+                // This method is not used in this example
+                return null;
+            }
+        });
 
-
-
+    }
 
     public void initialize(URL url, ResourceBundle resourceBundle){
         recipeControl = this;
     }
 
-    //Method for adding a recipe to the listview and linkedlist
+//    Method for adding a recipe to the listview and linkedlist
+    public void addRecipe(ActionEvent actionEvent) {
+        chosenIngredients.addAll(ingredientsAddedListView);
+        Recipe RP = new Recipe(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem(), getChosenIngredients());
+        recipeListView.getItems().add(RP); //adds the recipe to the list view
+        recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
+        ingredientsAddedListView.getItems().clear();
+        System.out.print(RP);
+    }
+
 //    public void addRecipe(ActionEvent actionEvent) {
-//        if(goodName!=null && ingredientName!=null && quantity!=null){
-//            Recipe RP = new Recipe(goodName.getText(), ingredientName.getText(), quantity.getText()); //Won't pull constructor from Recipe??
-//            recipeListView.getItems().add(RP); //adds the recipe to the list view
-//            recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
-//            goodName.clear();
-//            ingredientName.clear();
-//            quantity.clear();
+//        chosenIngredients.addAll(ingredientsAddedListView);
+//        Recipe RP = new Recipe(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem(), getChosenIngredients());
+//
+//        ObservableList<TreeItem<String>> rootItems = recipeTreeView.getRoot().getChildren();
+//        int numTrees = rootItems.size();
+//        int treeNum = numTrees+1;
+//        String rootName = "rootItem"+treeNum;
+//
+//        if(numTrees > 0){
+//            TreeItem<Object> rootName = new TreeItem<>(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem());
+//            rootName.setExpanded(true);
+//            recipeTreeView.setRoot(rootName);
+//
+//            TreeItem<Object> childItem = new TreeItem<>("Recipe:");
+//            rootName.getChildren().add(childItem);
+//
+//            for (int i = 0; i < chosenIngredients.size(); i++ ) {
+//                TreeItem<Object> grandchildItem = new TreeItem<>(chosenIngredients.findByIndex(i));
+//                childItem.getChildren().add(grandchildItem);
+//            }
 //        }
+//
+//        TreeItem<Object> rootItem = new TreeItem<>(bakeryGoodChoiceBox.getSelectionModel().getSelectedItem());
+//        rootItem.setExpanded(true);
+//        recipeTreeView.setRoot(rootItem);
+//
+//        TreeItem<Object> childItem = new TreeItem<>("Recipe:");
+//        rootItem.getChildren().add(childItem);
+//
+//        for (int i = 0; i < chosenIngredients.size(); i++ ) {
+//            TreeItem<Object> grandchildItem = new TreeItem<>(chosenIngredients.findByIndex(i));
+//            childItem.getChildren().add(grandchildItem);
+//        }
+//
+////        TreeItem<Object> grandchildItem = new TreeItem<>(Ingredient);
+////        childItem.getChildren().add(grandchildItem);
+//
+//
+//        recipeListView.getItems().add(RP); //adds the recipe to the list view
+//        recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
+//        System.out.print(RP);
 //    }
 
     //TODO Still need to finish adding the recipe once finished with selecting ingredients will have to decide upon how we handle the data structure.
     //TODO possibly changing the recipeListView to a tree list but will need a lot of nested generic linked listing work done, still figuring out
     //TODO after adding a recipe to its generic list, clear chosenIngredient listview
-    public void addRecipe(ActionEvent actionEvent) {
-    }
+//    public void addRecipe(ActionEvent actionEvent) {
+//    }
 
 
     //Method for deleting an item from the list view
@@ -158,6 +227,7 @@ public class RecipeController implements Initializable {
         ingredientsToAddListView.setManaged(true);
         ingredientsToAddListView.setVisible(true);
         ingredientsToAddListView.getSelectionModel().clearSelection();
+        enteredQuantity.clear();
     }
 
     //removes a selected item from the chosen Ingredients ListView.
@@ -167,10 +237,6 @@ public class RecipeController implements Initializable {
             ingredientsAddedListView.getItems().remove(I);
         }
     }
-
-
-
-
 }
 
 

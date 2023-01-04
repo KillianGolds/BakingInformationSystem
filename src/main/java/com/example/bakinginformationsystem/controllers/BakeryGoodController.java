@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
 import java.io.*;
 import java.net.URL;
@@ -59,12 +60,13 @@ public class BakeryGoodController implements Initializable {
             BakeryGood BG = new BakeryGood(goodType.getText(), itemName.getText(), textDesc.getText(), origin.getText(),imageURL.getText());
             goodsListView.getItems().add(BG); //adds the bakerygood to the list view
             bakeryGoodList.addLast(BG); //adds the bakerygood to the bakerygoodlist linkedlist
-            recipeControl.bakeryGoodChoiceBox.getItems().add(BG.getItemName());
+            recipeControl.bakeryGoodChoiceBox.getItems().add(BG);
             goodType.clear();
             itemName.clear();
             textDesc.clear();
             origin.clear();
             imageURL.clear();
+
         }
     }
 

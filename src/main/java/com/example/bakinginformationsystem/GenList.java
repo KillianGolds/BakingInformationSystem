@@ -1,5 +1,6 @@
 package com.example.bakinginformationsystem;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 
@@ -135,6 +136,39 @@ public class GenList<object> {
             specificListView.getItems().add(current.data.toString());
             current = current.next;
         }
+    }
+
+    public void addAll(ListView<object> listView) {
+        ObservableList<object> items = listView.getItems();
+        for (object item : items) {
+            addLast(item);
+        }
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nIngredients:\n");
+        Node current = head;
+        while (current != null) {
+            sb.append(current.data);
+            if (current.next != null) {
+                sb.append("\n");
+            }
+            current = current.next;
+        }
+        sb.append("\n==================================");
+        return sb.toString();
+    }
+
+    public object findByIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.data;
     }
 
 

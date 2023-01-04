@@ -61,10 +61,10 @@ public class Ingredient {
 
     //Methods
     public String toString(){
-        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories + ", Measurement Unit: " + measurementUnit;
+        return "Name: " + ingredientName +", Calories: " + calories + ", Measurement Unit: " + measurementUnit +"\nTextual Description: " + ingredientDescription;
     }
 
     public String toString2(){
-        return "Name: " + ingredientName + ", Description: " + ingredientDescription + ", Calories: " + calories +"\nQuantity: "+quantity+" "+measurementUnit.toLowerCase();
+        return "Name: " + ingredientName + ", Calories: " + calories +"\nQuantity: "+quantity+" "+measurementUnit.toLowerCase()+"\nTextual Description:" + ingredientDescription;
     }
 }
