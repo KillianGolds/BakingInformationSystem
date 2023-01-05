@@ -22,6 +22,11 @@ import static com.example.bakinginformationsystem.controllers.IngredientControll
 public class RecipeController implements Initializable {
 
     public static RecipeController recipeControl;
+
+    public ChoiceBox<BakeryGood> getBakeryGoodChoiceBox() {
+        return bakeryGoodChoiceBox;
+    }
+
     @FXML
     public ChoiceBox<BakeryGood> bakeryGoodChoiceBox;
     @FXML
@@ -77,6 +82,10 @@ public class RecipeController implements Initializable {
 
     public void setChosenIngredients(GenList<Ingredient> chosenIngredients) {
         this.chosenIngredients = chosenIngredients;
+    }
+
+    public ListView<Ingredient> getIngredientsToAddListView() {
+        return ingredientsToAddListView;
     }
 
     @FXML
@@ -153,6 +162,8 @@ public class RecipeController implements Initializable {
     public void refreshRecipeListView(ActionEvent actionEvent) {
         recipeListView.getItems().clear(); //deletes listview content
         recipeList.iterate(getRecipeListView()); //iterates over each element in the recipe list and adds each element to the listview.
+        ingredientsToAddListView.getItems().clear();
+        ingredientControl.ingredientList.iterate(getIngredientsToAddListView());
     }
 
     //Method changed recipe scene to prompt user to input the quantity of an ingredient after selecting an ingredient

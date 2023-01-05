@@ -30,6 +30,10 @@ public class Main extends Application {
         stage.show();
 
 
+        bakeryGoodControl.editBakeryItem.setVisible(false);
+        bakeryGoodControl.updateBakeryItem.setVisible(false);
+        ingredientControl.updateIngredientItem.setVisible(false);
+        ingredientControl.editIngredientItem.setVisible(false);
 
         ToggleGroup ingredientRadioButtons = new ToggleGroup();
         ingredientControl.inMilliliters.setToggleGroup(ingredientRadioButtons);

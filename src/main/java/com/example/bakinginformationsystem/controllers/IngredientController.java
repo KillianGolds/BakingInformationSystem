@@ -1,14 +1,13 @@
 package com.example.bakinginformationsystem.controllers;
 
+
 import com.example.bakinginformationsystem.BakeryGood;
 import com.example.bakinginformationsystem.GenList;
-import com.example.bakinginformationsystem.HashTable;
 import com.example.bakinginformationsystem.Ingredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +40,12 @@ public class IngredientController implements Initializable {
     public Button refreshIngredientsListView;
     @FXML
     public TextField quantity;
-    public GenList<Ingredient> ingredientList = new GenList();
+    public GenList<Ingredient> ingredientList = new GenList<>();
+    @FXML
+    public Button updateIngredientItem;
+    @FXML
+    public Button editIngredientItem;
+
     public GenList<Ingredient> getIngredientList() {
         return ingredientList;
     }
@@ -72,6 +76,7 @@ public class IngredientController implements Initializable {
             ingredientName.clear();
             ingredientTextDesc.clear();
             calories.clear();
+            editIngredientItem.setVisible(true);
         }
     }
 
@@ -124,5 +129,37 @@ public class IngredientController implements Initializable {
     private void populateContent(){
         ingredientList.iterate(getIngredientsListView());
         ingredientList.iterate(recipeControl.ingredientsToAddListView);
+    }
+
+    public void editIngredientItem(ActionEvent actionEvent) {
+        if (ingredientsListView.getSelectionModel().getSelectedItem()!=null) {
+            Ingredient IG = ingredientsListView.getSelectionModel().getSelectedItem();
+            ingredientName.setText(IG.getIngredientName());
+            ingredientTextDesc.setText(IG.getIngredientDescription());
+            calories.setText(Integer.toString(IG.getCalories()));
+            if(IG.getMeasurementUnit().equals("Grams")){
+                inGrams.setSelected(true);
+            } else {
+                inMilliliters.setSelected(true);
+            }
+            updateIngredientItem.setVisible(true);
+        }
+    }
+
+    public void updateIngredientItem(ActionEvent actionEvent) {
+        if (ingredientsListView.getSelectionModel().getSelectedItem()!=null) {
+            Ingredient IG = ingredientsListView.getSelectionModel().getSelectedItem();
+            IG.setIngredientName(ingredientName.getText());
+            IG.setIngredientDescription(ingredientTextDesc.getText());
+            IG.setCalories(Integer.parseInt(calories.getText()));
+            IG.setMeasurementUnit(ingredientRadioButtonChoice());
+            System.out.println(IG);
+            updateIngredientItem.setVisible(false);
+            refreshIngredientListView(actionEvent);
+            recipeControl.refreshRecipeListView(actionEvent);
+            ingredientName.clear();
+            ingredientTextDesc.clear();
+            calories.clear();
+        }
     }
 }

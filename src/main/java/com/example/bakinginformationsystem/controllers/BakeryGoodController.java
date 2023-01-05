@@ -22,6 +22,10 @@ public class BakeryGoodController implements Initializable, Serializable{
 
     public static BakeryGoodController bakeryGoodControl;
     @FXML
+    public Button updateBakeryItem;
+    @FXML
+    public Button editBakeryItem;
+    @FXML
     private TextField goodType;
     @FXML
     private TextField itemName;
@@ -67,6 +71,7 @@ public class BakeryGoodController implements Initializable, Serializable{
             origin.clear();
             imageURL.clear();
             System.out.println(BG);
+            editBakeryItem.setVisible(true);
 
         }
     }
@@ -110,10 +115,41 @@ public class BakeryGoodController implements Initializable, Serializable{
 
     public String fileName(){return "bakerygoods.dat";}
 
-
-
     private void populateContent(){
         bakeryGoodList.iterate(getGoodsListView());
         bakeryGoodList.addAllToChoiceBox(recipeControl.bakeryGoodChoiceBox);
+    }
+
+    public void editBakeryItem(ActionEvent actionEvent) {
+        if (goodsListView.getSelectionModel().getSelectedItem()!=null) {
+            BakeryGood BG = goodsListView.getSelectionModel().getSelectedItem();
+            itemName.setText(BG.getItemName());
+            goodType.setText(BG.getGoodType());
+            origin.setText(BG.getOrigin());
+            textDesc.setText(BG.getTextDesc());
+            imageURL.setText(BG.getImageURL());
+            updateBakeryItem.setVisible(true);
+        }
+    }
+
+    public void updateBakeryItem(ActionEvent actionEvent) {
+        if (goodsListView.getSelectionModel().getSelectedItem()!=null) {
+            BakeryGood BG = goodsListView.getSelectionModel().getSelectedItem();
+            BG.setItemName(itemName.getText());
+            BG.setGoodType(goodType.getText());
+            BG.setOrigin(origin.getText());
+            BG.setTextDesc(textDesc.getText());
+            BG.setImageURL(imageURL.getText());
+            System.out.println(BG);
+            updateBakeryItem.setVisible(false);
+            recipeControl.bakeryGoodChoiceBox.getItems().clear();
+            bakeryGoodList.addAllToChoiceBox(recipeControl.getBakeryGoodChoiceBox());
+            refreshBakeryGoodListView(actionEvent);
+            goodType.clear();
+            itemName.clear();
+            textDesc.clear();
+            origin.clear();
+            imageURL.clear();
+        }
     }
 }

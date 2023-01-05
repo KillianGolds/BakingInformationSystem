@@ -49,9 +49,11 @@ public class Ingredient implements Serializable {
         return measurementUnit;
     }
 
-    public void setMeasurementUnit(int calories) {
+    public void setMeasurementUnit(String measurementUnit) {
         this.measurementUnit = measurementUnit;
     }
+
+
 
     public double getQuantity() {
         return quantity;

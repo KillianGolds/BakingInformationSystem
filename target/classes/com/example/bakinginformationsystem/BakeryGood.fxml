@@ -128,12 +128,38 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button fx:id="addItem" mnemonicParsing="false" onAction="#addBakeryGood" text="Add Bakery Item">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <ListView fx:id="goodsListView" prefHeight="265.0" prefWidth="663.0">
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="673.0">
+                     <children>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Button fx:id="editBakeryItem" mnemonicParsing="false" onAction="#editBakeryItem" text="Edit Bakery Item" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Button fx:id="addItem" mnemonicParsing="false" onAction="#addBakeryGood" text="Add Bakery Item" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Button fx:id="updateBakeryItem" mnemonicParsing="false" onAction="#updateBakeryItem" text="Update Bakery Item" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <ListView fx:id="goodsListView" prefHeight="294.0" prefWidth="663.0">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
