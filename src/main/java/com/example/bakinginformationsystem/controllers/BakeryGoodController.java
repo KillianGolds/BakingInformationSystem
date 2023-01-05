@@ -17,6 +17,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.bakinginformationsystem.HashTable.hashTableAccess;
 import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
 
 //to be done
@@ -60,6 +61,7 @@ public class BakeryGoodController implements Initializable {
             BakeryGood BG = new BakeryGood(goodType.getText(), itemName.getText(), textDesc.getText(), origin.getText(),imageURL.getText());
             goodsListView.getItems().add(BG); //adds the bakerygood to the list view
             bakeryGoodList.addLast(BG); //adds the bakerygood to the bakerygoodlist linkedlist
+
             recipeControl.bakeryGoodChoiceBox.getItems().add(BG);
             goodType.clear();
             itemName.clear();

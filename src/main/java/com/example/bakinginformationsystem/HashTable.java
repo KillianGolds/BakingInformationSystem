@@ -1,6 +1,14 @@
 package com.example.bakinginformationsystem;
 
-public class HashTable {
+import com.example.bakinginformationsystem.controllers.BakeryGoodController;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HashTable implements Initializable {
+
+    public static HashTable hashTableAccess;
     // The array that will store the hash table
     private Object[] table;
 
@@ -53,5 +61,9 @@ public class HashTable {
 
         // Set the object at the calculated index to null to remove it from the hash table
         table[index] = null;
+    }
+
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        hashTableAccess = this;
     }
 }
