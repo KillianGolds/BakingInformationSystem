@@ -3,6 +3,7 @@ module BakingInformationSystem {
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.desktop;
+    requires xstream;
 
     opens com.example.bakinginformationsystem to javafx.fxml;
     exports com.example.bakinginformationsystem;

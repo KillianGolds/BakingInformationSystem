@@ -1,12 +1,14 @@
 package com.example.bakinginformationsystem;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
-import java.util.NoSuchElementException;
+
+import java.io.Serializable;
 
 //to be done
-public class GenList<object> {
-    private class Node {
+public class GenList<object> implements Serializable {
+    private class Node implements Serializable {
         private object data;
         private Node next;
 
@@ -92,22 +94,8 @@ public class GenList<object> {
         }
     }
 
-    public object getFirst() {
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
-        return head.data;
-    }
 
-    public object removeFirst() {
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
-        object data = head.data;
-        head = head.next;
-        size--;
-        return data;
-    }
+
 
     public object find(object data) {
         Node current = head;
@@ -127,6 +115,7 @@ public class GenList<object> {
             current = current.next;
         }
     }
+
 
     public void iterateObjecttoString(ListView<String> specificListView) {
         Node current = head;
@@ -150,6 +139,15 @@ public class GenList<object> {
             current = current.next;
         }
     }
+
+    public void addAllToChoiceBox(ChoiceBox<object> choiceBox) {
+        Node current = head;
+        while (current != null) {
+            choiceBox.getItems().add(current.data);
+            current = current.next;
+        }
+    }
+
 
     public void search(String query, ListView<String> listView) {
         listView.getItems().clear();
@@ -188,6 +186,15 @@ public class GenList<object> {
         return current.data;
     }
 
+    public void setIndex(int index, object element) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
 
-    //possibly more methods needed here WIP.
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        current.data = element;
+    }
 }

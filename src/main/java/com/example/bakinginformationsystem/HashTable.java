@@ -1,16 +1,16 @@
 package com.example.bakinginformationsystem;
 
-import com.example.bakinginformationsystem.controllers.BakeryGoodController;
 import javafx.fxml.Initializable;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HashTable implements Initializable {
+public class HashTable implements Initializable, Serializable {
 
     public static HashTable hashTableAccess;
     // The array that will store the hash table
-    private Object[] table;
+    public Object[] table;
 
     // The size of the hash table
     private int size;
@@ -25,13 +25,16 @@ public class HashTable implements Initializable {
     public int hash(Object object) {
         // Use a prime number as the multiplier
         int result = object.hashCode();
+        if (result < 0) {
+            result = -result;
+        }
 
         // Mod the result by the size of the hash table to get the index
         return result % size;
     }
 
     // Method to add an object to the hash table
-    public void add(Object object) {
+    public void hashAdd(Object object) {
         // Calculate the index for the object
         int index = hash(object);
 

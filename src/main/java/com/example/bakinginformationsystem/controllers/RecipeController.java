@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -114,16 +115,31 @@ public class RecipeController implements Initializable {
             RP.addIngredient(item);
         }
         recipeListView.getItems().add(RP); //adds the recipe to the list view
-        hashTableAccess.add((Object) RP);
+        hashTableAccess.hashAdd((Object) RP);
         recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
-        ingredientsAddedListView.getItems().clear();
+
         System.out.print(RP);
+
+        int totalCalories = 0;
+        for (int i = 0; i < ingredientsAddedListView.getItems().size(); i++) {
+            Ingredient ingredient = ingredientsAddedListView.getItems().get(i);
+            totalCalories += ingredient.getCalories();
+        }
+        RP.setTotalCalories(totalCalories);
+
+        ingredientsAddedListView.getItems().clear();
+
+    }
+
+    private void calculateTotalCalories() {
+
     }
 
     //Method for deleting an item from the list view
     public void deleteRecipe(ActionEvent actionEvent) {
         Recipe RtoDelete = recipeListView.getSelectionModel().getSelectedItem();
         recipeListView.getItems().remove(RtoDelete); //deletes the selected recipe object from the list view
+        hashTableAccess.remove(RtoDelete);
         recipeList.delete(RtoDelete);
     }
 
@@ -176,6 +192,25 @@ public class RecipeController implements Initializable {
             Object I = ingredientsAddedListView.getSelectionModel().getSelectedItem();
             ingredientsAddedListView.getItems().remove(I);
         }
+    }
+
+    public void saveAllData() throws IOException {
+        ObjectOutputStream out=new ObjectOutputStream(new FileOutputStream(new File(fileName())));
+        out.writeObject(recipeList);
+        out.close();
+    }
+
+    public void loadAllData() throws IOException, ClassNotFoundException {
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File((fileName()))));
+        recipeList = (GenList<Recipe>) in.readObject();
+        in.close();
+        populateContent();
+    }
+
+    public String fileName(){return "recipes.dat";}
+
+    private void populateContent(){
+        recipeList.iterate(getRecipeListView());
     }
 }
 

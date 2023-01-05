@@ -1,6 +1,8 @@
 package com.example.bakinginformationsystem;
 
-public class BakeryGood {
+import java.io.Serializable;
+
+public class BakeryGood implements Serializable {
 
     private String goodType;
     private String itemName;
@@ -44,8 +46,11 @@ public class BakeryGood {
         return result;
     }
 
+    @Override
     public String toString() {
         return "Bakery Good: "+itemName+"\nType: "+goodType+", Country of Origin: "+origin+".\n"+ "Description: "+textDesc+".\n"+"Image URL: "+imageURL;
     }
+
+
 
 }

@@ -15,7 +15,7 @@
       <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="673.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="336.0">
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="249.0">
                <children>
                   <Label text="Baking Information System" underline="true">
                      <font>
@@ -27,19 +27,19 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="172.0">
                <children>
-                  <Button mnemonicParsing="false" text="Save">
+                  <Button fx:id="save" mnemonicParsing="false" onAction="#save" text="Save">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Load">
+                  <Button fx:id="load" mnemonicParsing="false" onAction="#load" text="Load">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Clear">
+                  <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" text="Clear">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -48,19 +48,17 @@
             </HBox>
          </children>
       </HBox>
-      <BorderPane prefHeight="584.0" prefWidth="673.0">
-         <padding>
-            <Insets top="30.0" />
-         </padding>
+      <BorderPane layoutY="27.0" prefHeight="587.0" prefWidth="673.0">
          <center>
-            <TabPane prefHeight="510.0" prefWidth="673.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <TabPane prefHeight="592.0" prefWidth="673.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
                 <Tab text="Baked Goods">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="673.0">
                            <children>
                               <fx:include source="BakeryGood.fxml" />
-                           </children></AnchorPane>
+                           </children>
+                        </AnchorPane>
                   </content>
                 </Tab>
                 <Tab text="Ingredients">
@@ -68,7 +66,8 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <fx:include source="Ingredient.fxml" />
-                           </children></AnchorPane>
+                           </children>
+                        </AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Recipe">
@@ -85,6 +84,15 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <fx:include source="Search.fxml" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="HashTable Query">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <fx:include source="HashTableQuery.fxml" />
                            </children>
                         </AnchorPane>
                      </content>

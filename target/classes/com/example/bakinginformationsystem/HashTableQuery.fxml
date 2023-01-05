@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bakinginformationsystem.controllers.HashQueryController">
+   <center>
+      <VBox prefHeight="490.0" prefWidth="673.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="286.0" prefWidth="673.0">
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox alignment="CENTER" prefHeight="286.0" prefWidth="673.0">
+                     <children>
+                        <Label text="Bakery Good List" underline="true" />
+                     </children>
+                  </HBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox alignment="CENTER" prefHeight="286.0" prefWidth="673.0">
+                     <children>
+                        <Label text="Ingredient List" underline="true" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="2.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox alignment="CENTER" prefHeight="286.0" prefWidth="673.0">
+                     <children>
+                        <Label text="Recipe List" underline="true" />
+                     </children>
+                  </HBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="452.0" prefWidth="673.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="224.0">
+                     <children>
+                        <ListView fx:id="bakeryGoodListView" prefHeight="453.0" prefWidth="224.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="224.0">
+                     <children>
+                        <ListView fx:id="ingredientListView" prefHeight="211.0" prefWidth="224.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="224.0">
+                     <children>
+                        <ListView fx:id="recipeListView" prefHeight="211.0" prefWidth="224.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="287.0" prefWidth="673.0">
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="330.0">
+                     <children>
+                        <Label text="Object Retrieved from HashTable" underline="true" />
+                     </children>
+                  </HBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="330.0">
+                     <children>
+                        <Label text="Recasted from HashTable" underline="true" />
+                     </children>
+                  </HBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+               </children>
+            </HBox>
+            <VBox alignment="TOP_CENTER" prefHeight="494.0" prefWidth="673.0">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="453.0" prefWidth="673.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="330.0">
+                           <children>
+                              <Label fx:id="fromHashTableClassCheck" alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="312.0" wrapText="true" />
+                              <Label fx:id="hashTableMembershipLabel" alignment="CENTER" prefHeight="176.0" prefWidth="330.0" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox alignment="CENTER" prefHeight="204.0" prefWidth="330.0">
+                           <children>
+                              <Label fx:id="recastedClassCheck" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="240.0" wrapText="true" />
+                              <Label fx:id="hashTableMembershipRecastedLabel" alignment="CENTER" prefHeight="176.0" prefWidth="330.0" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="673.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="269.0">
+                           <children>
+                              <Button fx:id="hashQuery" mnemonicParsing="false" onAction="#queryHashTable" prefHeight="25.0" prefWidth="187.0" text="Hash Table Membership Check">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children></HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="348.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Button fx:id="resetCheckLabel" mnemonicParsing="false" onAction="#resetCheckLabel" text="Reset Check">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Button fx:id="deleteHashTableItem" mnemonicParsing="false" onAction="#deleteObjectFromHashTable" text="Delete Object from Hashtable" />
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Separator>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Button fx:id="refreshAllListView" mnemonicParsing="false" onAction="#refreshAllListView" text="Refresh Lists" />
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Separator>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </VBox>
+            <Separator prefWidth="200.0" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label text="HashTable Querys" underline="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

@@ -1,14 +1,18 @@
 package com.example.bakinginformationsystem.controllers;
 
+
 import com.example.bakinginformationsystem.GenList;
-import javafx.beans.binding.Bindings;
+import com.example.bakinginformationsystem.Ingredient;
+import com.example.bakinginformationsystem.Recipe;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
+
 import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 import static com.example.bakinginformationsystem.controllers.BakeryGoodController.bakeryGoodControl;
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
@@ -237,32 +241,8 @@ public class SearchController implements Initializable {
         }
     }
 
-    public void sortCalorieAscending(ActionEvent actionEvent) {
-        String selectedItem = searchListView.getSelectionModel().getSelectedItem();
-
-
-        int colonIndex = selectedItem.indexOf(':');
-        String valueString = selectedItem.substring(colonIndex + 1).trim();
-
-
-        int value = Integer.parseInt(valueString);
-        for (int i = 0; i < searchListView.getItems().size() - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < searchListView.getItems().size(); j++) {
-                if (searchListView.getItems().get(j).compareTo(searchListView.getItems().get(minIndex)) < 0) {
-                    minIndex = j;
-                }
-            }
-            // Swap the elements
-            String temp = searchListView.getItems().get(i);
-            searchListView.getItems().set(i, searchListView.getItems().get(minIndex));
-            searchListView.getItems().set(minIndex, temp);
-        }
-    }
-
-
-
     public void sortAlphaDescending(ActionEvent actionEvent) {
+
         for (int i = 0; i < searchListView.getItems().size() - 1; i++) {
             int maxIndex = i;
             for (int j = i + 1; j < searchListView.getItems().size(); j++) {
@@ -277,7 +257,94 @@ public class SearchController implements Initializable {
         }
     }
 
-    public void sortCalorieDescending(ActionEvent actionEvent) {
-
+    public void sortCalorieAscending(ActionEvent actionEvent) {
+        for (int i = 0; i < recipeControl.recipeList.size() - 1; i++) {
+            // Find the index of the recipe with the lowest total calories
+            int minIndex = i;
+            for (int j = i + 1; j < recipeControl.recipeList.size(); j++) {
+                Recipe currentRecipe = recipeControl.recipeList.get(j);
+                int currentTotalCalories = currentRecipe.getTotalCalories();
+                Recipe minRecipe = recipeControl.recipeList.get(minIndex);
+                int minTotalCalories = minRecipe.getTotalCalories();
+                if (currentTotalCalories < minTotalCalories) {
+                    minIndex = j;
+                }
+            }
+            // Swap the recipe at the current index with the recipe at the min index
+            Recipe temp = recipeControl.recipeList.get(i);
+            recipeControl.recipeList.setIndex(i, recipeControl.recipeList.get(minIndex));
+            recipeControl.recipeList.setIndex(minIndex, temp);
+        }
+        for (int i = 0; i < ingredientControl.ingredientList.size() - 1; i++) {
+            // Find the index of the recipe with the lowest total calories
+            int minIndex = i;
+            for (int j = i + 1; j < ingredientControl.ingredientList.size(); j++) {
+                Ingredient currentIngredient = ingredientControl.ingredientList.get(j);
+                int currentTotalCalories = currentIngredient.getCalories();
+                Ingredient minIngredient = ingredientControl.ingredientList.get(minIndex);
+                int minTotalCalories = minIngredient.getCalories();
+                if (currentTotalCalories < minTotalCalories) {
+                    minIndex = j;
+                }
+            }
+            // Swap the recipe at the current index with the recipe at the min index
+            Ingredient temp = ingredientControl.ingredientList.get(i);
+            ingredientControl.ingredientList.setIndex(i, ingredientControl.ingredientList.get(minIndex));
+            ingredientControl.ingredientList.setIndex(minIndex, temp);
+        }
+            getSearchListView().getItems().clear();
+            bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView());
+            ingredientControl.ingredientList.iterateObjecttoString(getSearchListView());
+            recipeControl.recipeList.iterateObjecttoString(getSearchListView());
     }
+
+    public void sortCalorieDescending(ActionEvent actionEvent) {
+        for (int i = 0; i < recipeControl.recipeList.size() - 1; i++) {
+            //Find the index of the recipe with the highest total calories
+            int maxIndex = i;
+            for (int j = i + 1; j < recipeControl.recipeList.size(); j++) {
+                Recipe currentRecipe = recipeControl.recipeList.get(j);
+                int currentTotalCalories = currentRecipe.getTotalCalories();
+                Recipe maxRecipe = recipeControl.recipeList.get(maxIndex);
+                int maxTotalCalories = maxRecipe.getTotalCalories();
+                if (currentTotalCalories > maxTotalCalories) {
+                    maxIndex = j;
+                }
+            }
+            // Swap the recipe at the current index with the recipe at the max index
+            Recipe temp = recipeControl.recipeList.get(i);
+            recipeControl.recipeList.setIndex(i, recipeControl.recipeList.get(maxIndex));
+            recipeControl.recipeList.setIndex(maxIndex, temp);
+        }
+
+        for (int i = 0; i < ingredientControl.ingredientList.size() - 1; i++) {
+            //Find the index of the recipe with the highest total calories
+            int maxIndex = i;
+            for (int j = i + 1; j < ingredientControl.ingredientList.size(); j++) {
+                Ingredient currentIngredient = ingredientControl.ingredientList.get(j);
+                int currentTotalCalories = currentIngredient.getCalories();
+                Ingredient maxIngredient = ingredientControl.ingredientList.get(maxIndex);
+                int maxTotalCalories = maxIngredient.getCalories();
+                if (currentTotalCalories > maxTotalCalories) {
+                    maxIndex = j;
+                }
+            }
+            // Swap the recipe at the current index with the recipe at the max index
+            Ingredient temp = ingredientControl.ingredientList.get(i);
+            ingredientControl.ingredientList.setIndex(i, ingredientControl.ingredientList.get(maxIndex));
+            ingredientControl.ingredientList.setIndex(maxIndex, temp);
+        }
+
+        getSearchListView().getItems().clear();
+        bakeryGoodControl.bakeryGoodList.iterateObjecttoString(getSearchListView());
+        ingredientControl.ingredientList.iterateObjecttoString(getSearchListView());
+        recipeControl.recipeList.iterateObjecttoString(getSearchListView());
+    }
+
+
+
+
+
+
+
 }

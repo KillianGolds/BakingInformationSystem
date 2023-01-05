@@ -1,7 +1,19 @@
 package com.example.bakinginformationsystem;
 
+import java.io.Serializable;
+
 //to be done
-public class Recipe {
+public class Recipe implements Serializable {
+
+    public int getTotalCalories() {
+        return totalCalories;
+    }
+
+    public void setTotalCalories(int totalCalories) {
+        this.totalCalories = totalCalories;
+    }
+
+    private int totalCalories;
 
     private BakeryGood bakedGood;
 
@@ -15,6 +27,7 @@ public class Recipe {
     public Recipe(BakeryGood bakedGood) {
         this.bakedGood = bakedGood;
         this.recipeIngredients = new GenList<Ingredient>();
+        this.totalCalories = getTotalCalories();
     }
 
     //Getters+setters

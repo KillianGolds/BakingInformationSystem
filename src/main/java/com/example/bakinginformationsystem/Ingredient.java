@@ -1,7 +1,9 @@
 package com.example.bakinginformationsystem;
 
+import java.io.Serializable;
+
 //to be done
-public class Ingredient {
+public class Ingredient implements Serializable {
 
     private String ingredientName;
     private String ingredientDescription;

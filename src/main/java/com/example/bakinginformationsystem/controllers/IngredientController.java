@@ -1,5 +1,6 @@
 package com.example.bakinginformationsystem.controllers;
 
+import com.example.bakinginformationsystem.BakeryGood;
 import com.example.bakinginformationsystem.GenList;
 import com.example.bakinginformationsystem.HashTable;
 import com.example.bakinginformationsystem.Ingredient;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -65,7 +67,7 @@ public class IngredientController implements Initializable {
             //Need to convert from int to String. Can't wrap for some reason
             ingredientsListView.getItems().add(I); //adds the ingredient to the list view
             ingredientList.addLast(I); //adds the ingredient to the ingredientList linkedlist
-            hashTableAccess.add((Object) I);
+            hashTableAccess.hashAdd((Object) I);
             recipeControl.ingredientsToAddListView.getItems().add(I);
             ingredientName.clear();
             ingredientTextDesc.clear();
@@ -81,6 +83,7 @@ public class IngredientController implements Initializable {
         Ingredient ItoDelete = ingredientsListView.getSelectionModel().getSelectedItem();
         ingredientsListView.getItems().remove(ItoDelete); //deletes the selected Ingredient object from the list view
         recipeControl.ingredientsToAddListView.getItems().remove(ItoDelete);
+        hashTableAccess.remove(ItoDelete);
         ingredientList.delete(ItoDelete);
     }
 
@@ -101,5 +104,25 @@ public class IngredientController implements Initializable {
         } else {
             return "Millilitres";
         }
+    }
+
+    public void saveAllData() throws IOException {
+        ObjectOutputStream out=new ObjectOutputStream(new FileOutputStream(new File(fileName())));
+        out.writeObject(ingredientList);
+        out.close();
+    }
+
+    public void loadAllData() throws IOException, ClassNotFoundException {
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File((fileName()))));
+        ingredientList = (GenList<Ingredient>) in.readObject();
+        in.close();
+        populateContent();
+    }
+
+    public String fileName(){return "ingredients.dat";}
+
+    private void populateContent(){
+        ingredientList.iterate(getIngredientsListView());
+        ingredientList.iterate(recipeControl.ingredientsToAddListView);
     }
 }

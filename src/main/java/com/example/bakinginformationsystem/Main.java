@@ -8,9 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import java.io.IOException;
 
+import java.io.*;
+
+import static com.example.bakinginformationsystem.HashTable.hashTableAccess;
 import static com.example.bakinginformationsystem.controllers.BakeryGoodController.bakeryGoodControl;
+import static com.example.bakinginformationsystem.controllers.HashQueryController.hashQueryControl;
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
 import static com.example.bakinginformationsystem.controllers.MainController.mainControl;
 import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
@@ -42,6 +45,8 @@ public class Main extends Application {
 
         searchControl.onStart();
 
+        hashTableAccess = new HashTable(10);
+
         recipeControl.ingredientsToAddListView.setCellFactory(ingredientsAddedListView -> new ListCell<Ingredient>() {
             @Override
             protected void updateItem(Ingredient ingredient, boolean empty) {
@@ -61,6 +66,50 @@ public class Main extends Application {
             searchControl.search();
             searchControl.searchLists.search(query, searchControl.searchListView);
         });
+        try {
+            hashQueryControl.bakeryGoodListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                hashQueryControl.ingredientListView.getSelectionModel().clearSelection();
+                hashQueryControl.recipeListView.getSelectionModel().clearSelection();
+            });
+
+            hashQueryControl.ingredientListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                hashQueryControl.bakeryGoodListView.getSelectionModel().clearSelection();
+                hashQueryControl.recipeListView.getSelectionModel().clearSelection();
+            });
+
+            hashQueryControl.recipeListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                hashQueryControl.bakeryGoodListView.getSelectionModel().clearSelection();
+                hashQueryControl.ingredientListView.getSelectionModel().clearSelection();
+            });
+        }catch(IndexOutOfBoundsException ignore){
+
+        }
+    }
+
+    public static void saveAllData() throws IOException {
+        ObjectOutputStream out=new ObjectOutputStream(new FileOutputStream(new File(fileName())));
+        out.writeObject(hashTableAccess);
+        out.close();
+//        try (FileOutputStream fos = new FileOutputStream("hashtable.dat");
+//             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+//            oos.writeObject(hashTableAccess);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    public static void loadAllData() throws IOException, ClassNotFoundException {
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File((fileName()))));
+        hashTableAccess = (HashTable) in.readObject();
+        in.close();
+        populateContent();
+    }
+
+    public static String fileName(){return "hashtable.dat";}
+
+    private static void populateContent(){
+//        ingredientList.iterate(getIngredientsListView());
+//        ingredientList.iterate(recipeControl.ingredientsToAddListView);
     }
 
 
