@@ -31,6 +31,19 @@ public class BakeryGood {
     public String getImageURL() {return imageURL;}
     public void setImageURL(String imageURL) {this.imageURL = imageURL;}
 
+    public int hashCode() {
+        int prime = 31;
+        int result = 1;
+
+        result = prime * result + goodType.hashCode();
+        result = prime * result + itemName.hashCode();
+        result = prime * result + origin.hashCode();
+        result = prime * result + textDesc.hashCode();
+        result = prime * result + imageURL.hashCode();
+
+        return result;
+    }
+
 
     public String toString() {
         return "Bakery Good: "+itemName+"\nType: "+goodType+", Country of Origin: "+origin+".\n"+ "Description: "+textDesc+".\n"+"Image URL: "+imageURL;

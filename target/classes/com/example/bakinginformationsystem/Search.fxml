@@ -98,8 +98,8 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="196.0">
                                  <children>
-                                    <Button fx:id="sortAlphabeticallyAscending" mnemonicParsing="false" text="Sort Alphabetically Ascending" onAction="#sortAlphaAscending" />
-                                    <Button fx:id="sortAlphabeticallyDescending" mnemonicParsing="false" text="Sort Alphabetically Descending" onAction="#sortAlphaDescending"/>
+                                    <Button fx:id="sortAlphabeticallyAscending" mnemonicParsing="false" onAction="#sortAlphaAscending" text="Sort Alphabetically Ascending" />
+                                    <Button fx:id="sortAlphabeticallyDescending" mnemonicParsing="false" onAction="#sortAlphaDescending" text="Sort Alphabetically Descending" />
                                  </children>
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="150.0">
