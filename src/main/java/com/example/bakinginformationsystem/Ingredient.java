@@ -59,6 +59,18 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
+    public int hashCode() {
+        int prime = 31;
+        int result = 1;
+
+        result = prime * result + ingredientName.hashCode();
+        result = prime * result + ingredientDescription.hashCode();
+        result = prime * result + calories;
+        result = prime * result + measurementUnit.hashCode();
+
+        return result;
+    }
+
     //Methods
     @Override
     public String toString(){

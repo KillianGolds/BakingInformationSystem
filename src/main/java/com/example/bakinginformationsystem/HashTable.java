@@ -24,13 +24,7 @@ public class HashTable implements Initializable {
     // Hash function for the hash table
     public int hash(Object object) {
         // Use a prime number as the multiplier
-        int prime = 31;
-        int result = 1;
-
-        // Hash the fields of the object using the prime number multiplier
-        result = prime * result + object.field1.hashCode();
-        result = prime * result + object.field2.hashCode();
-        result = prime * result + object.field3.hashCode();
+        int result = object.hashCode();
 
         // Mod the result by the size of the hash table to get the index
         return result % size;

@@ -42,7 +42,7 @@ public class SearchController implements Initializable {
     public GenList<String> resultsList = new GenList<>();
 
 
-    public void Search(String searchTerm){
+    public void Search(String searchTerm) {
         this.searchTerm = searchTerm;
     }
 
@@ -59,11 +59,11 @@ public class SearchController implements Initializable {
         return searchListView;
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         searchControl = this;
     }
 
-    public void onStart(){
+    public void onStart() {
 
     }
 
@@ -131,8 +131,10 @@ public class SearchController implements Initializable {
         resultsList.clear();
         searchLists.clear();
         bakeryGoodControl.bakeryGoodList.addAllElementsToListFromListAsString(searchLists);
-        ingredientControl.ingredientList.addAllElementsToListFromListAsString(searchLists);;
-        recipeControl.recipeList.addAllElementsToListFromListAsString(searchLists);;
+        ingredientControl.ingredientList.addAllElementsToListFromListAsString(searchLists);
+        ;
+        recipeControl.recipeList.addAllElementsToListFromListAsString(searchLists);
+        ;
 
     }
 
@@ -275,110 +277,7 @@ public class SearchController implements Initializable {
         }
     }
 
+    public void sortCalorieDescending(ActionEvent actionEvent) {
 
-
-
-
-//        for (int i = 0; i < searchListView.getItems().size() - 1; i++) {
-//            int minIndex = i;
-//            for (int j = i + 1; j < searchListView.getItems().size(); j++) {
-//                if (searchListView.getItems().get(j).compareTo(searchListView.getItems().get(minIndex)) > 0) {
-//                    minIndex = j;
-//                }
-//            }
-//            // Swap the elements
-//            String temp = searchListView.getItems().get(i);
-//            searchListView.getItems().set(i, searchListView.getItems().get(minIndex));
-//            searchListView.getItems().set(minIndex, temp);
-
-    //        searchListView.setCellFactory(lv -> {
-//            ListCell<String> cell = new ListCell<>();
-//            cell.textProperty().bind(cell.itemProperty());
-//            cell.disableProperty().bind(Bindings.createBooleanBinding(() -> {
-//                String item = cell.getItem();
-//                return item != null && (item.contains("Bakery Goods:\n=======================================================") || item.contains("\nIngredients:\n=======================================================") || item.contains("\nRecipes:\n======================================================="));
-//            }, cell.itemProperty()));
-//            return cell;
-//        });
-    // Set the cell factory for the ListView
-//        searchListView.setCellFactory(listView -> new ListCell<String>() {
-//            @Override
-//            protected void updateItem(String item, boolean empty) {
-//                super.updateItem(item, empty);
-//
-//                if (item == null || empty) {
-//                    setText(null);
-//                    setStyle("");
-//                } else {
-//                    // Create a Group for the cell
-//                    Group group = new Group();
-//
-//                    // Add the item to the Group as a Label
-//                    group.getChildren().add(new Label(item));
-//
-//                    // Set the managed property of the Group to false
-//                    group.setManaged(false);
-//
-//                    // Set the cell to the Group
-//                    setGraphic(group);
-//
-//                    // Set the style based on the section that the item belongs to
-//                    if (item.startsWith("Bakery")) {
-//                        setStyle("-fx-background-color: lightgray");
-//                    } else if (item.startsWith("Ingredient")) {
-//                        setStyle("-fx-background-color: lightblue");
-//                    } else if (item.startsWith("Recipe")) {
-//                        setStyle("-fx-background-color: lightgreen");
-//                    } else {
-//                        setStyle("");
-//                    }
-//                }
-//            }
-//        });
+    }
 }
-//        // Get the indices of the headers
-//        GenList<Integer> headerIndices = new GenList<>();
-//        for (int i = 0; i < searchListView.getItems().size(); i++) {
-//            if (searchListView.getItems().get(i).startsWith("Header:")) {
-//                headerIndices.addLast(i);
-//            }
-//        }
-//
-//        // Sort the items in the ListView
-//        for (int i = 0; i < searchListView.getItems().size() - 1; i++) {
-//            int minIndex = i;
-//            for (int j = i + 1; j < searchListView.getItems().size(); j++) {
-//                if (searchListView.getItems().get(j).compareTo(searchListView.getItems().get(minIndex)) < 0) {
-//                    minIndex = j;
-//                }
-//            }
-//            // Swap the elements
-//            String temp = searchListView.getItems().get(i);
-//            searchListView.getItems().set(i, searchListView.getItems().get(minIndex));
-//            searchListView.getItems().set(minIndex, temp);
-//        }
-//
-//        // Move the headers back to the top of their sections
-//        for (int i = 0; i < headerIndices.size(); i++) {
-//            int headerIndex = headerIndices.get(i);
-//            String header = searchListView.getItems().get(headerIndex);
-//            searchListView.getItems().remove(headerIndex);
-//            searchListView.getItems().add(headerIndex, header);
-//        }
-//    }
-
-
-//    public void sortAlphaAscending(ActionEvent actionEvent) {
-//        for (int i = 0; i < searchListView.getItems().size() - 1; i++) {
-//            int minIndex = i;
-//            for (int j = i + 1; j < searchListView.getItems().size(); j++) {
-//                if (searchListView.getItems().get(j).compareTo(searchListView.getItems().get(minIndex)) < 0) {
-//                    minIndex = j;
-//                }
-//            }
-//            // Swap the elements
-//            String temp = searchListView.getItems().get(i);
-//            searchListView.getItems().set(i, searchListView.getItems().get(minIndex));
-//            searchListView.getItems().set(minIndex, temp);
-//        }
-//    }

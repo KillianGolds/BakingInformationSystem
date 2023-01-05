@@ -61,7 +61,7 @@ public class BakeryGoodController implements Initializable {
             BakeryGood BG = new BakeryGood(goodType.getText(), itemName.getText(), textDesc.getText(), origin.getText(),imageURL.getText());
             goodsListView.getItems().add(BG); //adds the bakerygood to the list view
             bakeryGoodList.addLast(BG); //adds the bakerygood to the bakerygoodlist linkedlist
-
+            hashTableAccess.add((Object) BG);
             recipeControl.bakeryGoodChoiceBox.getItems().add(BG);
             goodType.clear();
             itemName.clear();

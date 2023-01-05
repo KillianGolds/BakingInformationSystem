@@ -1,6 +1,7 @@
 package com.example.bakinginformationsystem.controllers;
 
 import com.example.bakinginformationsystem.GenList;
+import com.example.bakinginformationsystem.HashTable;
 import com.example.bakinginformationsystem.Ingredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.bakinginformationsystem.HashTable.hashTableAccess;
 import static com.example.bakinginformationsystem.controllers.RecipeController.recipeControl;
 
 public class IngredientController implements Initializable {
@@ -63,6 +65,7 @@ public class IngredientController implements Initializable {
             //Need to convert from int to String. Can't wrap for some reason
             ingredientsListView.getItems().add(I); //adds the ingredient to the list view
             ingredientList.addLast(I); //adds the ingredient to the ingredientList linkedlist
+            hashTableAccess.add((Object) I);
             recipeControl.ingredientsToAddListView.getItems().add(I);
             ingredientName.clear();
             ingredientTextDesc.clear();

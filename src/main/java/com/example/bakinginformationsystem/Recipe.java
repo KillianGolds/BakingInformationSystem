@@ -27,6 +27,17 @@ public class Recipe {
     public void addIngredient(Ingredient ingredient) {
         recipeIngredients.addLast(ingredient);
     }
+
+    public int hashCode() {
+        int prime = 31;
+        int result = 1;
+
+        result = prime * result + bakedGood.hashCode();
+        result = prime * result + recipeIngredients.hashCode();
+
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Recipe:\n" + bakedGood + recipeIngredients;

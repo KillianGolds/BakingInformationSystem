@@ -14,6 +14,7 @@ import javafx.util.StringConverter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.bakinginformationsystem.HashTable.hashTableAccess;
 import static com.example.bakinginformationsystem.controllers.IngredientController.ingredientControl;
 
 //TODO tidy up recipe output
@@ -113,6 +114,7 @@ public class RecipeController implements Initializable {
             RP.addIngredient(item);
         }
         recipeListView.getItems().add(RP); //adds the recipe to the list view
+        hashTableAccess.add((Object) RP);
         recipeList.addLast(RP); //adds the recipe to the recipeList linkedlist
         ingredientsAddedListView.getItems().clear();
         System.out.print(RP);

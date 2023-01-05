@@ -104,8 +104,8 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="150.0">
                                  <children>
-                                    <Button fx:id="sortCaloriesAscending" mnemonicParsing="false" text="Sort Calories Ascending" />
-                                    <Button fx:id="sortCaloriesDescending" mnemonicParsing="false" text="Sort Calories Descending" />
+                                    <Button fx:id="sortCaloriesAscending" mnemonicParsing="false" text="Sort Calories Ascending" onAction="#sortCalorieAscending" />
+                                    <Button fx:id="sortCaloriesDescending" mnemonicParsing="false" text="Sort Calories Descending" onAction="#sortCalorieDescending"/>
                                  </children>
                               </VBox>
                            </children></HBox>
